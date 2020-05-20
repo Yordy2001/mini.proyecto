@@ -1,4 +1,16 @@
-from  os import system 
+from os import system 
+from database import Database
+from player import Player
+
+# Abre la conexion con la base de datos
+Database.connect('mlb.db');
+
+# Obtiene la lista de jugadores desde la base de datos
+players = Database.getPlayers()
+
+# Imprime la lista de jugadores
+for player in players:
+   print(player.name+ ', ' +str(player.age)+ ', ' +player.team)
 
 lista = []
 def MLB(lista):
@@ -39,13 +51,8 @@ def MLB(lista):
             system("cls")
 print(MLB(lista))
 
+# Almacena la lista de jugadores en la base de datos
+Database.setPlayers(players)
 
-
-
-
-
-
-
-
-
-
+# Cierra la conexion con la base de datos
+Database.close();
