@@ -1,71 +1,49 @@
-
 from os import system
 from tabulate import tabulate
+from jugador import Jugador
 
-class Jugador:
-    nombre = []
-    edad = []
-    equipo = []
+jugadores = []
 
+system("cls")
+print("MAJOR LENGUAJE BASEBALL\n")
 
-lista = []
-def MLB():
+while True:
 
-    system("cls")
-    print("MAJOR LENGUAJE BASEBALL\n")
+    print("Seleccione una opcion:\n")
+    print("1.AGREGAR JUGADOR\n2.IMPRIMIR JUGADORES\n3.CERRAR PROGRAMA\n ")
+    elija = input("Seleccione la opción deseada: ")
 
-    count = 0
-    while True:
+    if elija == "agregar jugador":
+        system("cls")
+        jugador = Jugador()
+        jugador.nombre = input("ingrese el nombre del jugador ")
 
-        print("Seleccione una opcion:\n")
-        print("1.AGREGAR JUGADOR\n2.IMPRIMIR JUGADORES\n3.CERRAR PROGRAMA\n ")
-        elija = input("Seleccione la opción deseada: ")
+        while True:
 
-        if elija == "agregar jugador":
-            system("cls")
-            jugador = Jugador()
-            jugador.nombre.append(input("ingrese el nombre del jugador "))
+            try:
+                jugador.edad = int(input("ingrese la edad de jugador "))
+                break
+            except ValueError:
+                print("DEBE INGRESAR UN NUMERO ENTERO")
+                pass
 
-            while True:
+        jugador.equipo = input("ingrese el equipo del jugador  ")
+        jugadores.append(jugador)
 
-                try:
-                    jugador.edad.append(int(input(f"ingrese la edad de {jugador.nombre[count]} ")))
-                    break
-                except ValueError:
-                    print("debe ingresar un numero entero")
-                    pass
+    elif elija == "imprimir jugadores":
+        system("cls")
+        tabla = []
+        for jugador in (jugadores):
+            tabla.append(jugador.nombre)
 
-            jugador.equipo.append(input(f"ingrese el equipo de {jugador.nombre[count]} "))
-            count +=1
-            
-            print (input("presione enter tecla para continuar"))
-            return MLB()
+        print(tabulate(tabla, headers=[
+              "nombre", "edad", "equipo"], tablefmt="grid"))
 
-        if elija == "imprimir jugadores":
-            system("cls")
+    elif elija == "cerrar programa":
+        system("cls")
+        print("bye")
+        break
 
-            for i in range(len(Jugador.nombre)):
-                lista.append([Jugador.nombre[i].capitalize(),Jugador.edad[i],Jugador.equipo[i].capitalize()])
-
-            print(tabulate(lista,headers=["nombre","edad","equipo"],tablefmt="grid"))
-
-            print(input("presione la tecla enter para continuar"))
-            return MLB()
-
-        if elija == "cerrar programa":
-            system("cls")
-            print("bye")
-            break
-
-        else:
-            system("cls")
-            print("!REVISE SU ESCRITURA!")
-            return MLB()
-
-MLB()
-
-
-
-
-
-
+    else:
+        system("cls")
+        print("!REVISE SU ESCRITURA!")
