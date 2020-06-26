@@ -16,7 +16,7 @@ while True:
     if elija == "agregar jugador":
         system("cls")
         jugador = Jugador()
-        jugador.nombre = input("ingrese el nombre del jugador ")
+        jugador.nombre = str(input("ingrese el nombre del jugador "))
 
         while True:
 
@@ -27,17 +27,21 @@ while True:
                 print("DEBE INGRESAR UN NUMERO ENTERO")
                 pass
 
-        jugador.equipo = input("ingrese el equipo del jugador  ")
+        jugador.equipo = str(input("ingrese el equipo del jugador "))
         jugadores.append(jugador)
+        
+        print(input("presione cualquier tecla para continuar"))
 
     elif elija == "imprimir jugadores":
         system("cls")
         tabla = []
         for jugador in (jugadores):
-            tabla.append(jugador.nombre)
+            tabla.append([jugador.nombre.capitalize(),jugador.edad,jugador.equipo.capitalize()])
 
         print(tabulate(tabla, headers=[
               "nombre", "edad", "equipo"], tablefmt="grid"))
+        
+        print(input("presione cualquier tecla para regresar"))
 
     elif elija == "cerrar programa":
         system("cls")
