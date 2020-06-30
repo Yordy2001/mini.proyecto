@@ -1,8 +1,17 @@
 from os import system
+from database import Database
 from tabulate import tabulate
 from jugador import Jugador
 
-jugadores = []
+# Abre la conexion con la base de datos
+Database.connect('mlb.db');
+
+# Obtiene la lista de jugadores desde la base de datos
+jugadores = Database.getPlayers()
+
+# # Imprime la lista de jugadores
+# for player in players:
+#    print(player.name+ ', ' +str(player.age)+ ', ' +player.team)
 
 system("cls")
 print("MAJOR LENGUAJE BASEBALL\n")
@@ -15,28 +24,32 @@ while True:
 
     if elija == "agregar jugador":
         system("cls")
-        jugador = Jugador()
-        jugador.nombre = str(input("ingrese el nombre del jugador "))
-
+    
+        nombre = str(input("ingrese el nombre del jugador "))
+        edad = 0
         while True:
 
             try:
-                jugador.edad = int(input("ingrese la edad de jugador "))
+                edad = int(input("ingrese la edad de jugador "))
                 break
             except ValueError:
                 print("DEBE INGRESAR UN NUMERO ENTERO")
                 pass
 
-        jugador.equipo = str(input("ingrese el equipo del jugador "))
+        equipo = str(input("ingrese el equipo del jugador "))
+        jugador = Jugador(nombre, edad, equipo)
         jugadores.append(jugador)
-        
+                
+        # Almacena la lista de jugadores en la base de datos
+        Database.setPlayers(jugadores)
+
         print(input("presione cualquier tecla para continuar"))
 
     elif elija == "imprimir jugadores":
         system("cls")
         tabla = []
         for jugador in (jugadores):
-            tabla.append([jugador.nombre.capitalize(),jugador.edad,jugador.equipo.capitalize()])
+            tabla.append([jugador.name.capitalize(), jugador.age, jugador.team.capitalize()])
 
         print(tabulate(tabla, headers=[
               "nombre", "edad", "equipo"], tablefmt="grid"))
@@ -51,3 +64,9 @@ while True:
     else:
         system("cls")
         print("!REVISE SU ESCRITURA!")
+        
+# Almacena la lista de jugadores en la base de datos
+Database.setPlayers(jugadores)
+
+# Cierra la conexion con la base de datos
+Database.close();
