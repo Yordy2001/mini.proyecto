@@ -1,5 +1,5 @@
 import sqlite3
-from jugador import Jugador
+from player import Player
 
 class Database:
 
@@ -18,7 +18,7 @@ class Database:
     players = []
 
     for name, age, team in Database.cursor.fetchall():
-        players.append(Jugador(name, age, team))
+        players.append(Player(name, age, team))
 
     return players;
 

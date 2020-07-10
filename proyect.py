@@ -1,7 +1,7 @@
 from os import system
 from database import Database
 from tabulate import tabulate
-from jugador import Jugador
+from player import Player
 
 # Open the connection to the database
 Database.connect('mlb.db');
@@ -34,7 +34,7 @@ while True:
                 pass
 
         team=input("ingrese el equipo del jugador ")
-        player=Jugador(name, age, team)
+        player=Player(name, age, team)
         players.append(player)
 
         # Store the player list in the database
