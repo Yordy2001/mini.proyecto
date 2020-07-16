@@ -1,7 +1,7 @@
 from os import system
 from database import Database
 from tabulate import tabulate
-from jugador import Jugador
+from player import Player
 
 # Abre la conexion con la base de datos
 Database.connect('mlb.db');
@@ -9,9 +9,6 @@ Database.connect('mlb.db');
 # Obtiene la lista de jugadores desde la base de datos
 jugadores = Database.getPlayers()
 
-# # Imprime la lista de jugadores
-# for player in players:
-#    print(player.name+ ', ' +str(player.age)+ ', ' +player.team)
 
 system("cls")
 print("MAJOR LENGUAJE BASEBALL\n")
@@ -37,7 +34,7 @@ while True:
                 pass
 
         equipo = str(input("ingrese el equipo del jugador "))
-        jugador = Jugador(nombre, edad, equipo)
+        jugador = Player(nombre, edad, equipo)
         jugadores.append(jugador)
                 
         # Almacena la lista de jugadores en la base de datos
