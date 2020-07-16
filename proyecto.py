@@ -3,11 +3,11 @@ from database import Database
 from tabulate import tabulate
 from player import Player
 
-# Abre la conexion con la base de datos
+# Open the connection to the database
 Database.connect('mlb.db');
 
-# Obtiene la lista de jugadores desde la base de datos
-jugadores = Database.getPlayers()
+# Get the list of players from the database
+players = Database.getPlayers()
 
 
 system("cls")
@@ -17,43 +17,43 @@ while True:
 
     print("Seleccione una opcion:\n")
     print("1.AGREGAR JUGADOR\n2.IMPRIMIR JUGADORES\n3.CERRAR PROGRAMA\n ")
-    elija = input("Seleccione la opción deseada: ")
+    select = input("Seleccione la opción deseada: ")
 
-    if elija == "agregar jugador":
+    if select == "agregar jugador" or select == "1":
         system("cls")
     
-        nombre = str(input("ingrese el nombre del jugador "))
-        edad = 0
+        name = str(input("ingrese el nombre del jugador "))
+        age = 0
         while True:
 
             try:
-                edad = int(input("ingrese la edad de jugador "))
+                age = int(input("ingrese la edad de jugador "))
                 break
             except ValueError:
                 print("DEBE INGRESAR UN NUMERO ENTERO")
                 pass
 
-        equipo = str(input("ingrese el equipo del jugador "))
-        jugador = Player(nombre, edad, equipo)
-        jugadores.append(jugador)
+        team = str(input("ingrese el equipo del jugador "))
+        player = Player(name, age, team)
+        players.append(player)# Almacena la lista de jugadores en la base de datos
                 
-        # Almacena la lista de jugadores en la base de datos
-        Database.setPlayers(jugadores)
+        # Store the player list in the database
+        Database.setPlayers(players)
 
         print(input("presione cualquier tecla para continuar"))
 
-    elif elija == "imprimir jugadores":
+    elif select == "imprimir jugadores" or select == "2":
         system("cls")
-        tabla = []
-        for jugador in (jugadores):
-            tabla.append([jugador.name.capitalize(), jugador.age, jugador.team.capitalize()])
+        table = []
+        for player in (players):
+            table.append([player.name.capitalize(), player.age, player.team.capitalize()])
 
-        print(tabulate(tabla, headers=[
+        print(tabulate(table, headers=[
               "nombre", "edad", "equipo"], tablefmt="grid"))
         
         print(input("presione cualquier tecla para regresar"))
 
-    elif elija == "cerrar programa":
+    elif select == "cerrar programa" or select == "3":
         system("cls")
         print("bye")
         break
@@ -62,8 +62,8 @@ while True:
         system("cls")
         print("!REVISE SU ESCRITURA!")
         
-# Almacena la lista de jugadores en la base de datos
-Database.setPlayers(jugadores)
+# Store the player list in the database
+Database.setPlayers(players)
 
-# Cierra la conexion con la base de datos
+# Close the connection to the database
 Database.close();
