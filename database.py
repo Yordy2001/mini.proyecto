@@ -1,6 +1,7 @@
 import sqlite3
 from player import Player
 
+
 class Database:
 
   conn = None
