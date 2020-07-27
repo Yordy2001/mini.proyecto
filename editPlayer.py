@@ -34,4 +34,3 @@ def editPlayer(players):
 
     else:
         print("su respuesta debe ser SI o NO")
-
