@@ -3,8 +3,6 @@ from os import system
 
 def prinPlayers(players):
     count = -1
-    # while count <= len(players):
-    #     count +=1
     table = []
     for jugador in (players):
         count +=1
@@ -13,5 +11,3 @@ def prinPlayers(players):
        
     print(tabulate(table, headers=["position",
                 "NAME", "AGE", "TEAM"], tablefmt="grid"))
-
-
