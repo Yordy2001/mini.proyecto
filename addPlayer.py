@@ -17,7 +17,3 @@ def addPlayer(players):
     team = str(input("ingrese el equipo del jugador "))
     player = Player(name, age, team)
     players.append(player)# Stores the list of players in the database
-
-
-   
-

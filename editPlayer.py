@@ -31,7 +31,5 @@ def editPlayer(players):
     elif ask == "no":
         print("revise bien la posicion")
         
-
     else:
         print("su respuesta debe ser SI o NO")
-
