@@ -13,40 +13,33 @@ Database.connect('mlb.db');
 # Get the list of players from the database
 players = Database.getPlayers()
 
-
 print("MAJOR LENGUAJE BASEBALL\n")
 
 while True:
     system("cls")
     print("SELECCIONE UNA OPCION MARCANDO EL NUMERO DE SU POSICION :\n")
-    print("""1.AGREGAR JUGADOR\n2.IPRIMIR JUGADORES\n3.EDITAR JUGADOR\n4.CERRAR PROGRAMA\n""")
+    print("1.AGREGAR JUGADOR\n2.IPRIMIR JUGADORES\n3.EDITAR JUGADOR\n4.CERRAR PROGRAMA\n")
 
     select = input(str("Seleccione la opcion deseada: "))
 
     if select == "agregar jugador" or select == "1":
         system("cls")
         
-        # llama la  funcion de agregar jugador
+        # call the add player function
         addPlayer(players)
         
-        print(input("presione cualquier tecla para continuar"))
-    
     elif select == "imprimir jugadores" or select == "2":
         system("cls")
         
-        # llama la funcion de imprimir jugadores
+        # call the print player function
         prinPlayers(players)
         
-        print(input("presione cualquier tecla para continuar"))
-    
     elif select == "editar jugador" or select == "3":
         system("cls")
         
-        # llama la funcion de editar jugador
+        # call edid player function
         editPlayer(players)
-        
-        print(input("presione cualquier tecla para continuar"))
-    
+      
     elif select =="salir del programa" or select == "4":
         system("cls")
         
@@ -57,11 +50,11 @@ while True:
     else:
         system("cls")
         print("!REVISE SU ESCRITURA!")
-        
+    
+    # Store the player list in the database
+    Database.setPlayers(players)
 
-
-# Store the player list in the database
-Database.setPlayers(players)
+    print(input("presione cualquier tecla para continuar"))
 
 # Close the connection to the database
 Database.close();

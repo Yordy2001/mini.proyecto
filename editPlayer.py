@@ -2,38 +2,36 @@ from os import system
 from database import Database
 from prinplayers import *
 
-
 def editPlayer(players):
-    system("cls")
 
-    # imprime los jugadores para que el usario elija cual cambiar
+    #print the players so the user can choose which one to change
     prinPlayers(players)
+   
+    position = int(input("Introduzca la posición del jugador a editar "))
 
-    position = int(input("Introduzca la posicion del jugador a editar "))
-
-    print(table[position])
-
-    ask = input("Este es el jugador que desea editar ? ")
+    player = players[position]
+    
+    ask = input("{} Éste es el jugador que desea editar ? ".format(player.name))
 
     if ask == "si":
 
-        a = input("Que dato desea editar ? ")
-        e = input("Introduzca el nuevo dato ")
+        name = input("edita el nombre {} ".format(player.name))
+        age = input("edita la edad {} ".format(player.age))
+        team = input("edita el equipo {} ".format(player.team))
 
-        if a == "nombre":
-            table[position][0] = e
+        if name != "":
+            player.name = name
 
-        elif a == "edad":
-            table[position][1] = e
+        if age != "":
+            player.age = age
 
-        elif a == "apellido":
-            table[position][2] = e
+        if team != "":
+            player.team = team
 
     elif ask == "no":
-         print("revise bien la posicion")
-    
+        print("revise bien la posicion")
+        
+
     else:
         print("su respuesta debe ser SI o NO")
-        
-    
 
