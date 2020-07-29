@@ -5,7 +5,7 @@ from player import Player
 from addPlayer import addPlayer
 from prinplayers import *
 from editPlayer import editPlayer
-
+from delete import deletePlayer
 
 # Open the connection to the database
 Database.connect('mlb.db');
@@ -18,7 +18,7 @@ print("MAJOR LENGUAJE BASEBALL\n")
 while True:
     system("cls")
     print("SELECCIONE UNA OPCION MARCANDO EL NUMERO DE SU POSICION :\n")
-    print("1.AGREGAR JUGADOR\n2.IPRIMIR JUGADORES\n3.EDITAR JUGADOR\n4.CERRAR PROGRAMA\n")
+    print("1.AGREGAR JUGADOR\n2.IPRIMIR JUGADORES\n3.EDITAR JUGADOR\n4.ELIMINAR JUGADOR\n5.CERRAR PROGRAMA\n")
 
     select = input(str("Seleccione la opcion deseada: "))
 
@@ -39,8 +39,14 @@ while True:
         
         # call edid player function
         editPlayer(players)
-      
-    elif select =="salir del programa" or select == "4":
+    
+    elif select == "eliminar jugador" or select == "4":
+        system("cls")
+
+        # call delete player function 
+        deletePlayer(players)
+
+    elif select =="salir del programa" or select == "5":
         system("cls")
         
         print("bye")
