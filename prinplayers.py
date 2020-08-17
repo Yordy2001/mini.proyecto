@@ -1,5 +1,4 @@
 from tabulate import tabulate
-from os import system
 
 def prinPlayers(players):
     count = -1

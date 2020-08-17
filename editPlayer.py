@@ -1,16 +1,25 @@
 from database import Database
 from prinplayers import *
 
+
 def editPlayer(players):
 
-    #print the players so the user can choose which one to change
+    # print the players so the user can choose which one to change
     prinPlayers(players)
-    
-    position = int(input("Introduzca la posición del jugador a editar "))
-        
-    player = players[position]
-    
-    ask = input("{} Éste es el jugador que desea editar ? ".format(player.name))
+
+    position = 0
+    while True:
+        try:
+            position = int(
+                input("Introduzca la posición del jugador a editar "))
+            player = players[position]
+            break
+        except Exception:
+            print("Debe introducir una poscion")
+
+    ask = input(
+        "{} Éste es el jugador que desea editar ? ".format(
+            player.name))
 
     if ask == "si":
 
@@ -29,6 +38,6 @@ def editPlayer(players):
 
     elif ask == "no":
         print("revise bien la posicion")
-        
+
     else:
         print("su respuesta debe ser SI o NO")

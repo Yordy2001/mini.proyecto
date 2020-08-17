@@ -2,24 +2,31 @@ from os import system
 from prinplayers import *
 from database import Database
 
+
 def deletePlayer(players):
 
-    #print the players so the user can choose which one to change
+    # print the players so the user can choose which one to change
     prinPlayers(players)
 
-    positions = int(input("introduzca la posicion del jugador a eliminar "))
+    positions = 0
+    while True:
 
-    player = players[positions]
+        try:
+            positions = int(
+                input("introduzca la posicion del jugador a eliminar "))
+            player = players[positions]
+            break
+        except Exception:
+            print("debe introducir un numero de la posicion")
 
     delete = input("{} es el jugador que desea eliminar? ".format(player.name))
 
     if delete == "si":
         del players[positions]
 
-    if delete == "no":
+    elif delete == "no":
         print("revise la posicion")
-        deletePlayer(players)
-
+        deletePlayer(players)  # return de delete player function
     else:
         print("debe introducir SI o NO ")
-        deletePlayer(players)
+        deletePlayer(players)  # return de delete player function
