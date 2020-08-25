@@ -1,3 +1,4 @@
+from os import system
 from database import Database
 from prinplayers import *
 
@@ -23,9 +24,9 @@ def editPlayer(players):
 
     if ask == "si":
 
-        name = input("edita el nombre {} ".format(player.name))
-        age = input("edita la edad {} ".format(player.age))
-        team = input("edita el equipo {} ".format(player.team))
+        name = input("Edita el nombre {} ".format(player.name))
+        age = input("Edita la edad {} ".format(player.age))
+        team = input("Edita el equipo {} ".format(player.team))
 
         if name != "":
             player.name = name
@@ -37,7 +38,11 @@ def editPlayer(players):
             player.team = team
 
     elif ask == "no":
-        print("revise bien la posicion")
+        system("cls")
+        print("Revise bien la posición")
+        return editPlayer(players)
 
     else:
-        print("su respuesta debe ser SI o NO")
+        system("cls")
+        print("Su respuesta debe ser SI o NO")
+        return editPlayer(players)      

@@ -2,7 +2,6 @@ from player import Player
 from database import Database
 from print_teams import prinTeam
 
-
 def addPlayer(players):
    
     name = str(input("Ingrese el nombre del jugador "))
@@ -10,7 +9,7 @@ def addPlayer(players):
     while True:
 
         try:
-            age = int(input("Ingrese la edad de jugador "))
+            age = int(input("Ingrese la edad del jugador "))
             break
         except ValueError:
             print("DEBE INGRESAR UN NUMERO ENTERO \n")

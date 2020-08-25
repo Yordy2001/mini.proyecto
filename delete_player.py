@@ -8,7 +8,7 @@ def deletePlayer(players):
     # print the players so the user can choose which one to change
     prinPlayers(players)
 
-    positions = 0
+    positions = -1
     while True:
 
         try:

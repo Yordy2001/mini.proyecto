@@ -1,23 +1,24 @@
-from teams import Team
+from team import Team
 
-
+equipos = []
 def addTeam():
 
-    all_team = Team()
-
-    all_team.name.append(input("Ingrese el nombre del equipo "))
+    name_of_team = input("Ingrese el nombre del equipo ")
 
     while True:
         try:
-            all_team.coronas.append(int(input("Ingrese  la canridad de coronas que ha gando ")))
+            champions = int(input("Ingrese  la cantidad de coronas que ha ganado "))
             break
         except ValueError:
             print("Debe ingresar un numero entero")
 
     while True:
         try:
-            all_team.series_mundiales.append(int(input("Ingrese  la cantidad de series mundiales que ha ganado "))) 
+            mundial_series = int(input("Ingrese  la cantidad de series mundiales que ha ganado ")) 
             break   
         except ValueError:
-            print("Debe introducir un numero entero")    
-        
+            print("Debe introducir un numero entero")  
+
+    all_team = Team(name_of_team, champions, mundial_series)
+    equipos.append([all_team.name_of_team, all_team.champions, all_team.mundial_series])# store the teams in the list equipos
+    
