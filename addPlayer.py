@@ -14,9 +14,10 @@ def addPlayer(players):
         except ValueError:
             print("DEBE INGRESAR UN NUMERO ENTERO \n")
             
+   
+    team = input("Escriba el nombre del equipo al que quiere que pertenezca el jugador ")
     # call prin_teams function 
     prinTeam()
-    team = input("Escriba el nombre del equipo al que quiere que pertenezca el jugador ")
     
     player = Player(name, age, team)
     players.append(player)# Stores the list of players in the database
