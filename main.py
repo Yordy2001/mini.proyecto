@@ -17,6 +17,7 @@ Database.connect('mlb.db')
 
 # Get the list of players from the database
 players = Database.getPlayers()
+teams = Database.getTeams()
  
 print("MAJOR LENGUAJE BASEBALL\n")
 
@@ -83,6 +84,7 @@ while True:
 
     # Store the player list in the database
     Database.setPlayers(players)
+    Database.setTeams(teams)
 
     print(input("presione cualquier tecla para continuar"))
 
