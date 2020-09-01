@@ -21,4 +21,3 @@ def addTeam():
 
     all_team = Team(name_of_team, champions, mundial_series)
     equipos.append([all_team.name_of_team, all_team.champions, all_team.mundial_series])# store the teams in the list equipos
-    
