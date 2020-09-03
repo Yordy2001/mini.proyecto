@@ -1,22 +1,34 @@
 from player import Player
 from database import Database
 from print_teams import prinTeam
+from idCreator import idGenerator
 
-def addPlayer(players):
+def addPlayer(players,teams):
    
-    name = str(input("Ingrese el nombre del jugador "))
+    id = idGenerator()
+
+    name = str(input("Ingrese el nombre del jugador: "))
     age = 0
     while True:
 
         try:
-            age = int(input("Ingrese la edad del jugador "))
+            age = int(input("Ingrese la edad del jugador: "))
             break
         except ValueError:
             print("DEBE INGRESAR UN NUMERO ENTERO \n")
             
     # call prin_teams function 
-    prinTeam()
-    team = input("Escriba el nombre del equipo al que quiere que pertenezca el jugador ")
+    prinTeam(teams)
+
+    position = -1
+    while True:
+        try:
+            positions = int(input("ingrese la posicion del equipo al que quiere que pertenezca el jugador: "))
+            team_id = teams[positions].id
+            break
+        except Exception:
+            print("revice la posicion!!")
     
-    player = Player(name, age, team)
+    
+    player = Player(id, name, age, team_id)
     players.append(player)# Stores the list of players in the database

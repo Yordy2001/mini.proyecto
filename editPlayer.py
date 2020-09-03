@@ -26,7 +26,7 @@ def editPlayer(players):
 
         name = input("Edita el nombre {} ".format(player.name))
         age = input("Edita la edad {} ".format(player.age))
-        team = input("Edita el equipo {} ".format(player.team))
+        team = input("Edita el equipo {} ".format(player.team_id))
 
         if name != "":
             player.name = name
@@ -35,7 +35,7 @@ def editPlayer(players):
             player.age = age
 
         if team != "":
-            player.team = team
+            player.team_id = team_id
 
     elif ask == "no":
         system("cls")

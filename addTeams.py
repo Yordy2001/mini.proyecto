@@ -1,24 +1,27 @@
 from team import Team
+from idCreator import idGenerator
+from database import Database
 
-equipos = []
-def addTeam():
+def addTeam(teams):
 
-    name_of_team = input("Ingrese el nombre del equipo ")
+    id = idGenerator()
+
+    name = input("Ingrese el nombre del equipo ")
 
     while True:
         try:
-            champions = int(input("Ingrese  la cantidad de coronas que ha ganado "))
+            championships = int(input("Ingrese  la cantidad de coronas que ha ganado "))
             break
         except ValueError:
             print("Debe ingresar un numero entero")
 
     while True:
         try:
-            mundial_series = int(input("Ingrese  la cantidad de series mundiales que ha ganado ")) 
+            world_series = int(input("Ingrese  la cantidad de series mundiales que ha ganado ")) 
             break   
         except ValueError:
             print("Debe introducir un numero entero")  
 
-    all_team = Team(name_of_team, champions, mundial_series)
-    equipos.append([all_team.name_of_team, all_team.champions, all_team.mundial_series])# store the teams in the list equipos
+    all_team = Team(id, name, championships, world_series)
+    teams.append(all_team)# store the teams in the list equipos
     

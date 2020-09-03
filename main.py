@@ -17,6 +17,7 @@ Database.connect('mlb.db')
 
 # Get the list of players from the database
 players = Database.getPlayers()
+# get the list of teams from the database
 teams = Database.getTeams()
  
 print("MAJOR LENGUAJE BASEBALL\n")
@@ -33,7 +34,7 @@ while True:
         system("cls")
 
         # call the add player function
-        addPlayer(players)
+        addPlayer(players,teams)
 
     elif select == "imprimir jugadores" or select == "2":
         system("cls")
@@ -57,19 +58,19 @@ while True:
         system("cls")
 
         # call add team function
-        addTeam()
+        addTeam(teams)
 
     elif select == "imprimir equipos" or select == "6":
         system("cls")
 
         # call print team function
-        prinTeam()
+        prinTeam(teams)
 
     elif select == "eliminar equipo" or select == "7":
         system("cls")
 
         # call delete team fuction
-        delete_team()
+        delete_team(teams)
 
     elif select == "salir del programa" or select == "8":
         system("cls")

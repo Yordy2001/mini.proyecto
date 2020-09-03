@@ -24,7 +24,7 @@ class Database:
         return players
 
     @staticmethod
-    def getTeam():
+    def getTeams():
 
         Database.cursor.execute('SELECT * FROM teams')
         teams = []
