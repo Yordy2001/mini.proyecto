@@ -8,6 +8,6 @@ def prinPlayers(players):
         table.append([count,jugador.id, jugador.name.capitalize(),
                 jugador.age, jugador.team_id])
        
-    print(tabulate(table, headers=["position","ID",
+    print(tabulate(table, headers=["position", "ID",
                 "NAME", "AGE", "TEAM"], tablefmt="grid"))
                 

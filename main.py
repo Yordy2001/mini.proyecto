@@ -3,7 +3,7 @@ from tabulate import tabulate
 from database import Database
 from player import Player
 from addPlayer import addPlayer
-from prinplayers import *
+from printPlayer import *
 from editPlayer import editPlayer
 from delete_player import deletePlayer
 from team import Team
@@ -34,7 +34,7 @@ while True:
         system("cls")
 
         # call the add player function
-        addPlayer(players,teams)
+        addPlayer(players, teams)
 
     elif select == "imprimir jugadores" or select == "2":
         system("cls")

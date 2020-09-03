@@ -22,6 +22,6 @@ def addTeam(teams):
         except ValueError:
             print("Debe introducir un numero entero")  
 
-    all_team = Team(id, name, championships, world_series)
-    teams.append(all_team)# store the teams in the list equipos
+    team = Team(id, name, championships, world_series)
+    teams.append(team)# store the teams in the list equipos
     

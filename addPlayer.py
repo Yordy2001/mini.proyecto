@@ -3,7 +3,7 @@ from database import Database
 from print_teams import prinTeam
 from idCreator import idCreator
 
-def addPlayer(players,teams):
+def addPlayer(players, teams):
    
     id = idCreator()
 

@@ -1,6 +1,6 @@
 from os import system
 from database import Database
-from prinplayers import *
+from printPlayer import *
 
 
 def editPlayer(players):
@@ -45,4 +45,4 @@ def editPlayer(players):
     else:
         system("cls")
         print("Su respuesta debe ser SI o NO")
-        return editPlayer(players)      
+        return editPlayer(players) 
