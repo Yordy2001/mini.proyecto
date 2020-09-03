@@ -1,10 +1,10 @@
 from team import Team
-from idCreator import idGenerator
+from idCreator import idCreator
 from database import Database
 
 def addTeam(teams):
 
-    id = idGenerator()
+    id = idCreator()
 
     name = input("Ingrese el nombre del equipo ")
 
