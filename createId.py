@@ -1,7 +1,7 @@
 import string
 import random
 
-def idCreator():
+def createId():
 
     password_len = 5
     characters = string.ascii_letters

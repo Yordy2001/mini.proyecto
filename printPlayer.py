@@ -10,4 +10,3 @@ def prinPlayers(players):
        
     print(tabulate(table, headers=["position", "ID",
                 "NAME", "AGE", "TEAM"], tablefmt="grid"))
-                

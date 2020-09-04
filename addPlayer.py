@@ -1,11 +1,11 @@
 from player import Player
 from database import Database
 from print_teams import prinTeam
-from idCreator import idCreator
+from createId import createId
 
 def addPlayer(players, teams):
    
-    id = idCreator()
+    id = createId()
 
     name = str(input("Ingrese el nombre del jugador: "))
     age = 0

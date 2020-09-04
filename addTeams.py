@@ -1,10 +1,10 @@
 from team import Team
-from idCreator import idCreator
+from createId import createId
 from database import Database
 
 def addTeam(teams):
 
-    id = idCreator()
+    id = createId()
 
     name = input("Ingrese el nombre del equipo ")
 
@@ -23,5 +23,4 @@ def addTeam(teams):
             print("Debe introducir un numero entero")  
 
     team = Team(id, name, championships, world_series)
-    teams.append(team)# store the teams in the list equipos
-    
+    teams.append(team)# store the teams in the data base
