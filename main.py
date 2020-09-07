@@ -24,10 +24,20 @@ print("MAJOR LENGUAJE BASEBALL\n")
 
 while True:
     system("cls")
-    print("SELECCIONE UNA OPCION MARCANDO EL NUMERO DE SU POSICION :\n")
-    print("1.AGREGAR JUGADOR\n2.IPRIMIR JUGADORES\n3.EDITAR JUGADOR\n4.ELIMINAR JUGADOR")
-    print("5.AGREGAR EQUIPO\n6.IMPRIMIR EQUIPOS\n7.ELIMINAR EQUIPO\n8.CERRAR PROGRAMA\n ")
-
+    print("""
+    x------------------------------------------------------------x
+    |  "SELECCIONE UNA OPCION MARCANDO EL NUMERO DE SU POSICION: |
+    |                                                            |     
+    |   1.AGREGAR JUGADOR                                        |
+    |   2.IPRIMIR JUGADORES                                      |
+    |   3.EDITAR JUGADOR                                         |
+    |   4.ELIMINAR JUGADOR                                       |
+    |   5.AGREGAR EQUIPO                                         |
+    |   6.IMPRIMIR EQUIPOS                                       |
+    |   7.ELIMINAR EQUIPO                                        |
+    |   8.CERRAR PROGRAMA                                        |
+    x------------------------------------------------------------x""")
+   
     select = input(str("Seleccione la opcion deseada: "))
 
     if select == "agregar jugador" or select == "1":

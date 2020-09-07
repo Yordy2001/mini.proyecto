@@ -15,10 +15,12 @@ def addPlayer(players, teams):
             age = int(input("Ingrese la edad del jugador: "))
             break
         except ValueError:
+
             print("DEBE INGRESAR UN NUMERO ENTERO \n")            
 
-    print("Ingrese la posicion del equipo al que quiere que pertenezca el jugador! \n")
-    
+        print("Ingrese la posicion del equipo al que quiere que pertenezca el jugador! \n")
+
+
     # call prin_teams function 
     prinTeam(teams)
 
