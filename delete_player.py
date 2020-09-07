@@ -1,5 +1,5 @@
 from os import system
-from prinplayers import *
+from printPlayer import prinPlayers
 from database import Database
 
 

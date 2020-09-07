@@ -1,5 +1,6 @@
 class Team:
-    def __init__(self, name_of_team, champions, mundial_series):
-        self.name_of_team = name_of_team
-        self.champions = champions
-        self.mundial_series = mundial_series
+    def __init__(self, id, name, championships, world_series):
+        self.id = id
+        self.name = name
+        self.championships = championships
+        self.world_series = world_series

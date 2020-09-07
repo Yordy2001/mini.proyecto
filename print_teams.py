@@ -1,12 +1,10 @@
 from tabulate import tabulate
-from addTeams import equipos
 
-def prinTeam():
+def prinTeam(teams):
     team_list = []
     position = -1
-    for equipo in (equipos):
+    for equipo in (teams):
         position +=1
-        team_list.append([position, equipo[0], equipo[1], equipo[2]])
+        team_list.append([position, equipo.id, equipo.name, equipo.championships, equipo.world_series])
 
-    print(tabulate(team_list,headers=["position","nombre", "coronas", "series Mundiales"],tablefmt="grid"))
-
+    print(tabulate(team_list, headers=["position", "ID", "nombre", "coronas", "series Mundiales"], tablefmt="grid"))
