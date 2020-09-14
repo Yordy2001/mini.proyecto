@@ -9,7 +9,7 @@ from database.team import Team
 
 class PlayerManager:
     def __init__(self, players):
-        players = Database.setPlayers()
+        players = Database.setPlayers(players)
 
     @staticmethod
     def addPlayer():
