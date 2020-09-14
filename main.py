@@ -1,16 +1,9 @@
 from os import system
 from tabulate import tabulate
-from database import Database
-from player import Player
-from addPlayer import addPlayer
-from printPlayer import *
-from editPlayer import editPlayer
-from delete_player import deletePlayer
-from team import Team
-from addTeams import addTeam
-from print_teams import prinTeam
-from delete_team import delete_team
-
+from database.database import Database
+from managers.teamManager import TeamManager 
+from managers.PlayerManager import PlayerManager
+from utils.tables import *
 
 # Open the connection to the database
 Database.connect('mlb.db')
@@ -19,70 +12,67 @@ Database.connect('mlb.db')
 players = Database.getPlayers()
 # get the list of teams from the database
 teams = Database.getTeams()
- 
+
 print("MAJOR LENGUAJE BASEBALL\n")
 
 while True:
     system("cls")
-    print("""
-    x------------------------------------------------------------x
-    |  "SELECCIONE UNA OPCION MARCANDO EL NUMERO DE SU POSICION: |
-    |                                                            |     
-    |   1.AGREGAR JUGADOR                                        |
-    |   2.IPRIMIR JUGADORES                                      |
-    |   3.EDITAR JUGADOR                                         |
-    |   4.ELIMINAR JUGADOR                                       |
-    |   5.AGREGAR EQUIPO                                         |
-    |   6.IMPRIMIR EQUIPOS                                       |
-    |   7.ELIMINAR EQUIPO                                        |
-    |   8.CERRAR PROGRAMA                                        |
-    x------------------------------------------------------------x""")
-   
+
+    # print the main table so the user can select 
+    Table()
+
     select = input(str("Seleccione la opcion deseada: "))
+    
+    if select == "1":
+        Table.TablePlayer()
 
-    if select == "agregar jugador" or select == "1":
-        system("cls")
+    elif select == "2":
+        Table.TableTeam()
 
-        # call the add player function
-        addPlayer(players, teams)
+    else:
+        print("")
 
-    elif select == "imprimir jugadores" or select == "2":
-        system("cls")
+    select_table = input(str("Seleccione la opcion deseada: "))
+    
+    if select_table == "1":
+        
+        select_player = input("selecione una opcion: ")
 
-        # call the print player function
-        prinPlayers(players)
+        if select_player == "1":
+            PlayerManager.addPlayer()
 
-    elif select == "editar jugador" or select == "3":
-        system("cls")
+        elif select_player == "2":
+            PlayerManager.printPlayer()
 
-        # call edid player function
-        editPlayer(players)
+        elif select_player == "3":
+            PlayerManager.editPlayer()
 
-    elif select == "eliminar jugador" or select == "4":
-        system("cls")
+        elif select_player == "4":
+            PlayerManager.deletePlayer()
+        
+        else:
+            print("Revise la escritura!!")
+            PlayerManager(players)
 
-        # call delete player function
-        deletePlayer(players)
+    elif select_table == "2":
+    
+        print("selecione una opcion! ")
+        select_team = input(' ')
 
-    elif select == "agregar equipo" or select == "5":
-        system("cls")
+        if select_team == "1":
+            TeamManager.addTeam()
 
-        # call add team function
-        addTeam(teams)
+        elif select_team == "2":
+            TeamManager.printTeam()
 
-    elif select == "imprimir equipos" or select == "6":
-        system("cls")
+        elif select_team == "3":
+            TeamManager.delete_team()
 
-        # call print team function
-        prinTeam(teams)
+        else:
+            print("revise la escritura")
+            TeamManager(teams)
 
-    elif select == "eliminar equipo" or select == "7":
-        system("cls")
-
-        # call delete team fuction
-        delete_team(teams)
-
-    elif select == "salir del programa" or select == "8":
+    elif select == "salir del programa" or select == "3":
         system("cls")
 
         print("bye")

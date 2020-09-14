@@ -1,6 +1,6 @@
 import sqlite3
-from player import Player
-from team import Team
+from database.player import Player
+from database.team import Team
 
 class Database:
 
