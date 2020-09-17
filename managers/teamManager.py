@@ -1,16 +1,15 @@
+from os import system
 from tabulate import tabulate
-from database.database import Database
+from database.database import  Database
 from utils.createId import createId
 from database.team import Team
-
 class TeamManager:
-    def __init__(self, teams):
-        self.teams = Database.getTeams()
-        
+    def __init__(self):
+      pass
 
     @staticmethod
-    def addTeam():
-        
+    def addTeam(teams):
+
         id = createId()
 
         name = input("Ingrese el nombre del equipo ")
@@ -31,9 +30,9 @@ class TeamManager:
 
         team = Team(id, name, championships, world_series)
         teams.append(team)# store the teams in the data base
-    
+
     @staticmethod
-    def printTeam():
+    def printTeam(teams):
         team_list = []
         position = -1
         for equipo in (teams):
@@ -44,10 +43,10 @@ class TeamManager:
 
 
     @staticmethod
-    def delete_team():
+    def delete_team(teams):
 
         # print the players so the user can choose which one to change
-        TeamManager.printTeam()
+        TeamManager.printTeam(teams)
 
         positions = -1
         while True:
@@ -67,8 +66,8 @@ class TeamManager:
 
         elif delete == "no":
             print("revise la posicion")
-            delete_team()  # return de delete player function
+            delete_team(teams)  # return de delete player function
             
         else:
             print("debe introducir SI o NO ")
-            delete_team()  # return de delete player function
+            delete_team(teams)  # return de delete player function

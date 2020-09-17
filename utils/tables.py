@@ -31,6 +31,6 @@ class Table:
         |   1.Add Team                                               |
         |   2.Print Team                                             |
         |   3.Delete Team                                            |  
-        |   4.Edit Team                                              |
+        |                                                            |
         x------------------------------------------------------------x""")
  

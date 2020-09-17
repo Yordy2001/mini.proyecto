@@ -1,8 +1,8 @@
 from os import system
 from tabulate import tabulate
 from database.database import Database
-from managers.teamManager import TeamManager 
 from managers.PlayerManager import PlayerManager
+from managers.teamManager import TeamManager
 from utils.tables import *
 
 # Open the connection to the database
@@ -22,57 +22,48 @@ while True:
     Table()
 
     select = input(str("Seleccione la opcion deseada: "))
-    
+
     if select == "1":
-       
+
         Table.TablePlayer()
-        
-        select_table = input("seleciona una opciin del menu de player")
 
-        if select_table == "1":
-            
-            if select_table == "5":
-                PlayerManager.addPlayer()
+        select_table_player = input("seleciona una opciin del menu de player: ")
 
-            elif select_table == "2":
-                PlayerManager.printPlayer()
+        if select_table_player == "1":
+            PlayerManager.addPlayer(players, teams)
 
-            elif select_table == "3":
-                PlayerManager.editPlayer()
+        elif select_table_player == "2":
+            PlayerManager.printPlayer(players)
 
-            elif select_table == "4":
-                PlayerManager.deletePlayer()
-            
-            else:
-                print("Revise la escritura!!")
-                PlayerManager(players)
+        elif select_table_player == "3":
+            PlayerManager.deletePlayer(players)
 
+        elif select_table_player == "4":
+            PlayerManager.editPlayer(players)
+
+        else:
+            print("Revise la escritura!!")
+            PlayerManager(players)
 
     elif select == "2":
 
         Table.TableTeam()
 
-        select_table = input(str("seleciona una opciin del menu de team: "))
+        select_table_team = input(str("seleciona una opciin del menu de team: "))
     
-        if select_table == "2":
-        
-            print("selecione una opcion! ")
-            select_team = input(' ')
+        if select_table_team == "1":
+            TeamManager.addTeam(teams)
 
-            if select_table == "5":
-                TeamManager.addTeam()
+        elif select_table_team == "2":
+            TeamManager.printTeam(teams)
 
-            elif select_table == "2":
-                TeamManager.printTeam()
+        elif select_table_team == "3":
+            TeamManager.delete_team(teams)
 
-            elif select_table == "3":
-                TeamManager.delete_team()
+        else:
+            print("revise la escritura")
+            TeamManager(teams)
 
-            else:
-                print("revise la escritura")
-                TeamManager(teams)
-
-    
     elif select == "salir del programa" or select == "3":
         system("cls")
 
