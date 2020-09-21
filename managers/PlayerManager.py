@@ -7,11 +7,14 @@ from database.team import Team
 from managers.teamManager import TeamManager
 
 class PlayerManager:
-    def __init__(self):
-        pass
+    players = None
 
     @staticmethod
-    def addPlayer(players, teams):
+    def init(players):
+        PlayerManager.players = players
+
+    @staticmethod
+    def addPlayer(teams):
 
         id = createId()
 
@@ -29,7 +32,7 @@ class PlayerManager:
         print("Ingrese la posicion del equipo al que quiere que pertenezca el jugador! \n")
 
         # call prin_teams function 
-        TeamManager.printTeam(teams)
+        TeamManager.printTeam()
 
         position = -1
         while True:
@@ -41,25 +44,25 @@ class PlayerManager:
                 print("revice la posicion!!")
 
         player = Player(id, name, age, team_id)
-        players.append(player)# Stores the list of players in the database
+        PlayerManager.players.append(player)# Stores the list of players in the database
 
     @staticmethod
-    def printPlayer(players):
+    def printPlayer():
         count = -1
         table = []
-        for jugador in (players):
+        for jugador in (PlayerManager.players):
             count +=1
             table.append([count,jugador.id, jugador.name.capitalize(),
                     jugador.age, jugador.team_id])
         
         print(tabulate(table, headers=["position", "ID",
-                    "NAME", "AGE", "TEAM"], tablefmt="grid"))
+                    "NAME", "AGE", "TEAM _ID"], tablefmt="grid"))
 
     @staticmethod
-    def editPlayer(players):
+    def editPlayer():
 
         # print all players
-        PlayerManager.printPlayer(players)
+        PlayerManager.printPlayer()
 
         position = 0
         while True:
@@ -93,18 +96,18 @@ class PlayerManager:
         elif ask == "no":
             system("cls")
             print("Revise bien la posición")
-            return PlayerManager.editPlayer(players)
+            return PlayerManager.editPlayer()
 
         else:
             system("cls")
             print("Su respuesta debe ser SI o NO")
-            return PlayerManager.editPlayer(players) 
+            return PlayerManager.editPlayer() 
 
     @staticmethod
-    def deletePlayer(players):
+    def deletePlayer():
 
         # print the players so the user can choose which one to change
-        PlayerManager.printPlayer(players)
+        PlayerManager.printPlayer()
 
         positions = -1
         while True:
@@ -112,20 +115,20 @@ class PlayerManager:
             try:
                 positions = int(
                     input("introduzca la posicion del jugador a eliminar "))
-                player = players[positions]
+                player = PlayerManager.players[positions]
                 break
             except Exception:
                 print("debe introducir un numero de la posicion")
 
-        delete = input("{} es el jugador que desea eliminar? ".format(player.name))
+        delete = input("{} es el jugador que desea eliminar? ".format(player.name.capitalize()))
 
         if delete == "si":
-            del players[positions]
+            del PlayerManager.players[positions]
 
         elif delete == "no":
             print("revise la posicion")
-            PlayerManager.deletePlayer(players)  # return de delete player function
+            PlayerManager.deletePlayer()  # return de delete player function
 
         else:
             print("debe introducir SI o NO ")
-            PlayerManager.deletePlayer(players)  # return de delete player function
+            PlayerManager.deletePlayer()  # return de delete player function

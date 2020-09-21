@@ -3,12 +3,15 @@ class Table:
 
         table = print("""
         x------------------------------------------------------------x
-        |  "SELECCIONE UNA OPCION MARCANDO EL NUMERO DE SU POSICION: |
+        |           "MAJOR LENGUAJE BASEBALL"                        | 
+        |                                                            |
+        |   "SELECCIONE UNA OPCION MARCANDO EL NUMERO DE SU POSICION:|
         |                                                            |     
         |   1.PLAYER                2.TEAM              3.SALIR      |
         |                                                            |
         |                                                            |
         x------------------------------------------------------------x""")
+
     @staticmethod
     def TablePlayer():
 

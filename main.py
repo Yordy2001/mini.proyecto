@@ -13,7 +13,9 @@ players = Database.getPlayers()
 # get the list of teams from the database
 teams = Database.getTeams()
 
-print("MAJOR LENGUAJE BASEBALL\n")
+PlayerManager.init(players)
+
+TeamManager.init(teams)
 
 while True:
     system("cls")
@@ -30,16 +32,16 @@ while True:
         select_table_player = input("seleciona una opciin del menu de player: ")
 
         if select_table_player == "1":
-            PlayerManager.addPlayer(players, teams)
+            PlayerManager.addPlayer(teams)
 
         elif select_table_player == "2":
-            PlayerManager.printPlayer(players)
+            PlayerManager.printPlayer()
 
         elif select_table_player == "3":
-            PlayerManager.deletePlayer(players)
+            PlayerManager.deletePlayer()
 
         elif select_table_player == "4":
-            PlayerManager.editPlayer(players)
+            PlayerManager.editPlayer()
 
         else:
             print("Revise la escritura!!")
@@ -50,15 +52,15 @@ while True:
         Table.TableTeam()
 
         select_table_team = input(str("seleciona una opciin del menu de team: "))
-    
+
         if select_table_team == "1":
-            TeamManager.addTeam(teams)
+            TeamManager.addTeam()
 
         elif select_table_team == "2":
-            TeamManager.printTeam(teams)
+            TeamManager.printTeam()
 
         elif select_table_team == "3":
-            TeamManager.delete_team(teams)
+            TeamManager.delete_team()
 
         else:
             print("revise la escritura")
@@ -67,7 +69,7 @@ while True:
     elif select == "salir del programa" or select == "3":
         system("cls")
 
-        print("bye")
+        print("Bye")
         break
 
     # avoid an error when entering the wrong data
