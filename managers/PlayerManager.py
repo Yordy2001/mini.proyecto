@@ -5,6 +5,8 @@ from utils.createId import createId
 from database.player import Player
 from database.team import Team
 from managers.teamManager import TeamManager
+from utils.getInt import getInt
+from utils.getPosition import *
 
 class PlayerManager:
     players = None
@@ -19,29 +21,16 @@ class PlayerManager:
         id = createId()
 
         name = str(input("Ingrese el nombre del jugador: "))
-        age = 0
-        while True:
 
-            try:
-                age = int(input("Ingrese la edad del jugador: "))
-                break
-            except ValueError:
-
-                print("DEBE INGRESAR UN NUMERO ENTERO \n")            
+        age = getInt()
 
         print("Ingrese la posicion del equipo al que quiere que pertenezca el jugador! \n")
 
         # call prin_teams function 
         TeamManager.printTeam()
 
-        position = -1
-        while True:
-            try:
-                positions = int(input("position-> "))
-                team_id = teams[positions].id
-                break
-            except Exception:
-                print("revice la posicion!!")
+        positions = position()
+        team_id = teams[positions].id
 
         player = Player(id, name, age, team_id)
         PlayerManager.players.append(player)# Stores the list of players in the database
@@ -52,11 +41,11 @@ class PlayerManager:
         table = []
         for jugador in (PlayerManager.players):
             count +=1
-            table.append([count,jugador.id, jugador.name.capitalize(),
-                    jugador.age, jugador.team_id])
+            table.append([count,jugador.name.capitalize(),
+                    jugador.age])
         
-        print(tabulate(table, headers=["position", "ID",
-                    "NAME", "AGE", "TEAM _ID"], tablefmt="grid"))
+        print(tabulate(table, headers=["position",
+                    "NAME", "AGE"], tablefmt="grid"))
 
     @staticmethod
     def editPlayer():
@@ -64,16 +53,11 @@ class PlayerManager:
         # print all players
         PlayerManager.printPlayer()
 
-        position = 0
-        while True:
-            try:
-                position = int(
-                    input("Introduzca la posición del jugador a editar "))
-                player = players[position]
-                break
-            except Exception:
-                print("Debe introducir una poscion")
-
+        print("Introduzca la posición del jugador a editar ")
+        
+        positions = position()
+        player = players[positions]
+               
         ask = input(
             "{} Éste es el jugador que desea editar ? ".format(
                 player.name))
@@ -109,17 +93,11 @@ class PlayerManager:
         # print the players so the user can choose which one to change
         PlayerManager.printPlayer()
 
-        positions = -1
-        while True:
+        print("introduzca la posicion del jugador a eliminar ")
 
-            try:
-                positions = int(
-                    input("introduzca la posicion del jugador a eliminar "))
-                player = PlayerManager.players[positions]
-                break
-            except Exception:
-                print("debe introducir un numero de la posicion")
-
+        positions = position()
+        player = PlayerManager.players[positions]
+           
         delete = input("{} es el jugador que desea eliminar? ".format(player.name.capitalize()))
 
         if delete == "si":

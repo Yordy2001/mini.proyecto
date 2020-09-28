@@ -12,9 +12,9 @@ Database.connect('mlb.db')
 players = Database.getPlayers()
 # get the list of teams from the database
 teams = Database.getTeams()
-
+# conect to the class that countai add, print, delete and edit player
 PlayerManager.init(players)
-
+# conect to the class that countai add, print, delete and edit player
 TeamManager.init(teams)
 
 while True:
