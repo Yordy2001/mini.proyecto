@@ -21,12 +21,12 @@ class PlayerManager:
 
         name = str(input("Ingrese el nombre del jugador: "))
 
-        age = promptNumber(message= "introduce la edad del jugador: ")
+        age = promptNumber("introduce la edad del jugador: ")
 
         # call prin_teams function 
         TeamManager.printTeam()
 
-        positions = promptNumber(message= "Ingrese la posicion del equipo al que quiere que pertenezca el jugador: ")
+        positions = promptNumber("Ingrese la posicion del equipo al que quiere que pertenezca el jugador: ")
         team_id = teams[positions].id
 
         player = Player(id, name, age, team_id)
@@ -50,7 +50,7 @@ class PlayerManager:
         # print all players
         PlayerManager.printPlayer()
 
-        positions = promptNumber(message= "Introduzca la posición del jugador a editar: ")
+        positions = promptNumber("Introduzca la posición del jugador a editar: ")
         player = PlayerManager.players[positions]
 
         ask = input(
@@ -88,7 +88,7 @@ class PlayerManager:
         # print the players so the user can choose which one to change
         PlayerManager.printPlayer()
 
-        positions = promptNumber(message= "introduzca la posicion del jugador a eliminar: ")
+        positions = promptNumber ("introduzca la posicion del jugador a eliminar: ")
         player = PlayerManager.players[positions]
 
         delete = input("{} es el jugador que desea eliminar? ".format(player.name.capitalize()))
