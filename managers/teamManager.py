@@ -3,6 +3,7 @@ from tabulate import tabulate
 from database.database import  Database
 from utils.createId import createId
 from database.team import Team
+from utils.promptNumber import promptNumber
 
 class TeamManager:
     teams = None
@@ -18,19 +19,9 @@ class TeamManager:
 
         name = input("Ingrese el nombre del equipo ")
 
-        while True:
-            try:
-                championships = int(input("Ingrese  la cantidad de coronas que ha ganado "))
-                break
-            except ValueError:
-                print("Debe ingresar un numero entero")
+        championships = promptNumber("ingrese la cantidad de coronas que ha ganado: ")
 
-        while True:
-            try:
-                world_series = int(input("Ingrese  la cantidad de series mundiales que ha ganado ")) 
-                break   
-            except ValueError:
-                print("Debe introducir un numero entero")  
+        world_series = promptNumber("ingrese la cantidad  de series mundiales que ha ganado: ")
 
         team = Team(id, name, championships, world_series)
         TeamManager.teams.append(team)# store the teams in the data base
@@ -41,9 +32,9 @@ class TeamManager:
         position = -1
         for equipo in (TeamManager.teams):
             position +=1
-            team_list.append([position, equipo.id, equipo.name, equipo.championships, equipo.world_series])
+            team_list.append([position,equipo.name, equipo.championships, equipo.world_series])
 
-        print(tabulate(team_list, headers=["position", "ID", "nombre", "coronas", "series Mundiales"], tablefmt="grid"))
+        print(tabulate(team_list, headers=["position","nombre", "coronas", "series Mundiales"], tablefmt="grid"))
 
     @staticmethod
     def delete_team():
@@ -51,16 +42,9 @@ class TeamManager:
         # print the players so the user can choose which one to change
         TeamManager.printTeam()
 
-        positions = -1
-        while True:
-
-            try:
-                positions = int(
-                    input("introduzca la posicion del equipo a eliminar "))
-                team = TeamManager.teams[positions]
-                break
-            except Exception:
-                print("debe introducir un numero de la posicion")
+        # get the position from the get position function
+        positions = promptNumber("introduzca la posicion del equipo a eliminar: ")
+        team = TeamManager.teams[positions]
 
         delete = input("{} es el equipo que desea eliminar? ".format(team.name))
 
@@ -69,8 +53,8 @@ class TeamManager:
 
         elif delete == "no":
             print("revise la posicion")
-            delete_team()  # return de delete player function
-            
+            delete_team()  # return de delete player function 
+
         else:
             print("debe introducir SI o NO ")
             delete_team()  # return de delete player function
