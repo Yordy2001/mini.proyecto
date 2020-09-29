@@ -5,8 +5,7 @@ from utils.createId import createId
 from database.player import Player
 from database.team import Team
 from managers.teamManager import TeamManager
-from utils.getInt import getInt
-from utils.getPosition import *
+from utils.promptNumber import promptNumber
 
 class PlayerManager:
     players = None
@@ -22,14 +21,12 @@ class PlayerManager:
 
         name = str(input("Ingrese el nombre del jugador: "))
 
-        age = getInt()
-
-        print("Ingrese la posicion del equipo al que quiere que pertenezca el jugador! \n")
+        age = promptNumber(message= "introduce la edad del jugador: ")
 
         # call prin_teams function 
         TeamManager.printTeam()
 
-        positions = position()
+        positions = promptNumber(message= "Ingrese la posicion del equipo al que quiere que pertenezca el jugador: ")
         team_id = teams[positions].id
 
         player = Player(id, name, age, team_id)
@@ -43,7 +40,7 @@ class PlayerManager:
             count +=1
             table.append([count,jugador.name.capitalize(),
                     jugador.age])
-        
+
         print(tabulate(table, headers=["position",
                     "NAME", "AGE"], tablefmt="grid"))
 
@@ -53,11 +50,9 @@ class PlayerManager:
         # print all players
         PlayerManager.printPlayer()
 
-        print("Introduzca la posición del jugador a editar ")
-        
-        positions = position()
-        player = players[positions]
-               
+        positions = promptNumber(message= "Introduzca la posición del jugador a editar: ")
+        player = PlayerManager.players[positions]
+
         ask = input(
             "{} Éste es el jugador que desea editar ? ".format(
                 player.name))
@@ -93,11 +88,9 @@ class PlayerManager:
         # print the players so the user can choose which one to change
         PlayerManager.printPlayer()
 
-        print("introduzca la posicion del jugador a eliminar ")
-
-        positions = position()
+        positions = promptNumber(message= "introduzca la posicion del jugador a eliminar: ")
         player = PlayerManager.players[positions]
-           
+
         delete = input("{} es el jugador que desea eliminar? ".format(player.name.capitalize()))
 
         if delete == "si":

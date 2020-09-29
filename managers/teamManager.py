@@ -3,8 +3,7 @@ from tabulate import tabulate
 from database.database import  Database
 from utils.createId import createId
 from database.team import Team
-from utils.getInt import getInt
-from utils.getPosition import position
+from utils.promptNumber import promptNumber
 
 class TeamManager:
     teams = None
@@ -20,12 +19,10 @@ class TeamManager:
 
         name = input("Ingrese el nombre del equipo ")
 
-        print("Ingrese  la cantidad de coronas que ha ganado ")
-        championships = getInt()
+        championships = promptNumber( message= "ingrese la cantidad de coronas que ha ganado: ")
 
-        print("Ingrese  la cantidad de series mundiales que ha ganado ")
-        world_series = getInt()
-        
+        world_series = promptNumber( message= "ingrese la cantidad  de series mundiales que ha ganado: ")
+
         team = Team(id, name, championships, world_series)
         TeamManager.teams.append(team)# store the teams in the data base
 
@@ -45,9 +42,8 @@ class TeamManager:
         # print the players so the user can choose which one to change
         TeamManager.printTeam()
 
-        print("introduzca la posicion del equipo a eliminar ")
         # get the position from the get position function
-        positions = position()
+        positions = promptNumber(message= "introduzca la posicion del equipo a eliminar: ")
         team = TeamManager.teams[positions]
 
         delete = input("{} es el equipo que desea eliminar? ".format(team.name))
@@ -58,6 +54,7 @@ class TeamManager:
         elif delete == "no":
             print("revise la posicion")
             delete_team()  # return de delete player function 
+
         else:
             print("debe introducir SI o NO ")
             delete_team()  # return de delete player function
