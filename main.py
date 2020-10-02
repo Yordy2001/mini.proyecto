@@ -17,6 +17,8 @@ PlayerManager.init(players)
 # conect to the class that countai add, print, delete and edit player
 TeamManager.init(teams)
 
+# database.playes.getPlayers();
+
 while True:
     system("cls")
 
@@ -85,3 +87,16 @@ while True:
 
 # Close the connection to the database
 Database.close()
+
+# from database.player import Player
+# from motor import Motor
+
+# motor1 = Motor.crearInstancia('Motor 1');
+# motor2 = Motor.crearInstancia('Motor 2');
+# motor3 = Motor.crearInstancia('Motor 3');
+
+# print(motor1.name)
+# print(motor2.name)
+# print(motor3.name)
+
+# Player('', '', '', '')
