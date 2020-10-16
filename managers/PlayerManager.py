@@ -2,8 +2,8 @@ from os import system
 from tabulate import tabulate
 from database.database import  Database
 from utils.createId import createId
-from database.player import Player
-from database.team import Team
+from models.player import Player
+from models.team import Team
 from managers.teamManager import TeamManager
 from utils.promptNumber import promptNumber
 

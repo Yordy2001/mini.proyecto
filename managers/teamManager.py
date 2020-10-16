@@ -2,7 +2,7 @@ from os import system
 from tabulate import tabulate
 from database.database import  Database
 from utils.createId import createId
-from database.team import Team
+from models.team import Team
 from utils.promptNumber import promptNumber
 
 class TeamManager:

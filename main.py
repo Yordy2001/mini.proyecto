@@ -1,17 +1,21 @@
 from os import system
 from tabulate import tabulate
 from database.database import Database
+from database.playerD import PlayerD
+from database.teamD import TeamD
 from managers.PlayerManager import PlayerManager
 from managers.teamManager import TeamManager
 from utils.tables import *
 
 # Open the connection to the database
 Database.connect('mlb.db')
+PlayerD.connect("mlb.db")
+TeamD.connect("mlb.db")
 
 # Get the list of players from the database
-players = Database.getPlayers()
+players = Database.player.getPlayers()
 # get the list of teams from the database
-teams = Database.getTeams()
+teams = Database.team.getTeams()
 # conect to the class that countai add, print, delete and edit player
 PlayerManager.init(players)
 # conect to the class that countai add, print, delete and edit player
@@ -80,23 +84,10 @@ while True:
         print("!REVISE SU ESCRITURA!")
 
     # Store the player list in the database
-    Database.setPlayers(players)
-    Database.setTeams(teams)
+    Database.player.setPlayers(players)
+    Database.team.setTeams(teams)
 
     print(input("presione cualquier tecla para continuar"))
 
 # Close the connection to the database
 Database.close()
-
-# from database.player import Player
-# from motor import Motor
-
-# motor1 = Motor.crearInstancia('Motor 1');
-# motor2 = Motor.crearInstancia('Motor 2');
-# motor3 = Motor.crearInstancia('Motor 3');
-
-# print(motor1.name)
-# print(motor2.name)
-# print(motor3.name)
-
-# Player('', '', '', '')
