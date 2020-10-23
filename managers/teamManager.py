@@ -19,9 +19,10 @@ class TeamManager:
 
         name = input("Ingrese el nombre del equipo ")
 
-        championships = promptNumber( message= "Ingrese la cantidad de coronas que ha ganado: ")
 
-        world_series = promptNumber( message= "Ingrese la cantidad  de series mundiales que ha ganado: ")
+        championships = promptNumber("ingrese la cantidad de coronas que ha ganado: ")
+
+        world_series = promptNumber("ingrese la cantidad  de series mundiales que ha ganado: ")
 
         team = Team(id, name, championships, world_series)
         TeamManager.teams.append(team)# store the teams in the data base
@@ -43,7 +44,8 @@ class TeamManager:
         TeamManager.printTeam()
 
         # get the position from the get position function
-        positions = promptNumber(message= "Introduzca la posicion del equipo a eliminar: ")
+        positions = promptNumber("introduzca la posicion del equipo a eliminar: ")
+
         team = TeamManager.teams[positions]
 
         delete = input("{}, es el equipo que desea eliminar? ".format(team.name))
