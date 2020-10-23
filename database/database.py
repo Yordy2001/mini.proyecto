@@ -6,29 +6,24 @@ from models.team import Team
 
 class Database:
 
-    conn = None
-    cursor = None
-    instancia = None
-    player = PlayerD
-    team = TeamD
-    
+    instance = None
+ 
     @staticmethod
     def connect(name):
-        Database.conn = sqlite3.connect(name)
-        Database.cursor = Database.conn.cursor()
 
-    @staticmethod
-    def crearInstancia(name):
-
-        if Database.instancia is not None:
-            return Database.instancia
+        if Database.instance is not None:
+            return Database.instance
         else:
-            Database.instancia = Database(name)
-            return Database.instancia
+            Database.instance = Database(name)
+            return Database.instance
 
     def __init__(self, name):
         self.name = name
+        self.conn = sqlite3.connect(name)
+        self.cursor = self.conn.cursor()
+        self.player = PlayerD(self.conn, self.cursor)
+        self.team = TeamD(self.conn, self.cursor)
 
     def close(self):
-        Database.cursor.close()
-        Database.conn.close()
+        self.cursor.close()
+        self.conn.close()

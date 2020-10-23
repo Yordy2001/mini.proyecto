@@ -2,35 +2,28 @@ from models.team import Team
 import sqlite3
 
 class TeamD:
- 
-    conn = None
-    cursor = None
-    
-    @staticmethod
-    def connect(name):
-        TeamD.conn = sqlite3.connect(name)
-        TeamD.cursor = TeamD.conn.cursor()
 
-    @staticmethod
-    def getTeams():
+    def __init__(self, conn, cursor):
+        self.conn = conn
+        self.cursor = cursor
 
-        TeamD.cursor.execute('SELECT * FROM teams')
+    def getTeams(self):
+        self.cursor.execute('SELECT * FROM teams')
         teams = []
 
-        for id, name, championships, world_series in TeamD.cursor.fetchall():
+        for id, name, championships, world_series in self.cursor.fetchall():
             teams.append(Team(id, name, championships, world_series))    
 
         return teams
 
-    @staticmethod
-    def setTeams(teams):
-        
-        TeamD.cursor.execute('DELETE FROM teams')
+    def setTeams(self, teams):
+
+        self.cursor.execute('DELETE FROM teams')
 
         for team in teams:
-            TeamD.cursor.execute(
+            self.cursor.execute(
                 'INSERT INTO teams VALUES (?, ?, ?, ?)',
                 (team.id, team.name, team.championships, team.world_series)
             )
 
-        TeamD.conn.commit()
+        self.conn.commit()

@@ -1,4 +1,5 @@
 class Team:
+
     def __init__(self, id, name, championships, world_series):
         self.id = id
         self.name = name

@@ -21,7 +21,7 @@ class PlayerManager:
 
         name = str(input("Ingrese el nombre del jugador: "))
 
-        age = promptNumber(message= "introduce la edad del jugador: ")
+        age = promptNumber(message= "Introduce la edad del jugador: ")
 
         # call prin_teams function 
         TeamManager.printTeam()

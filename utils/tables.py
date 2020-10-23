@@ -1,4 +1,5 @@
 class Table:
+
     def __init__(self):
 
         table = print("""
@@ -36,4 +37,3 @@ class Table:
         |   3.Delete Team                                            |  
         |                                                            |
         x------------------------------------------------------------x""")
- 
