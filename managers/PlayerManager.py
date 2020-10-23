@@ -2,9 +2,10 @@ from os import system
 from tabulate import tabulate
 from database.database import  Database
 from utils.createId import createId
-from database.player import Player
-from database.team import Team
+from models.player import Player
+from models.team import Team
 from managers.teamManager import TeamManager
+from utils.promptNumber import promptNumber
 
 class PlayerManager:
     players = None
@@ -19,29 +20,14 @@ class PlayerManager:
         id = createId()
 
         name = str(input("Ingrese el nombre del jugador: "))
-        age = 0
-        while True:
 
-            try:
-                age = int(input("Ingrese la edad del jugador: "))
-                break
-            except ValueError:
-
-                print("DEBE INGRESAR UN NUMERO ENTERO \n")            
-
-        print("Ingrese la posicion del equipo al que quiere que pertenezca el jugador! \n")
+        age = promptNumber(message= "Introduce la edad del jugador: ")
 
         # call prin_teams function 
         TeamManager.printTeam()
 
-        position = -1
-        while True:
-            try:
-                positions = int(input("position-> "))
-                team_id = teams[positions].id
-                break
-            except Exception:
-                print("revice la posicion!!")
+        positions = promptNumber(message= "Ingrese la posicion del equipo al que quiere que pertenezca el jugador: ")
+        team_id = teams[positions].id
 
         player = Player(id, name, age, team_id)
         PlayerManager.players.append(player)# Stores the list of players in the database
@@ -52,11 +38,11 @@ class PlayerManager:
         table = []
         for jugador in (PlayerManager.players):
             count +=1
-            table.append([count,jugador.id, jugador.name.capitalize(),
-                    jugador.age, jugador.team_id])
-        
-        print(tabulate(table, headers=["position", "ID",
-                    "NAME", "AGE", "TEAM _ID"], tablefmt="grid"))
+            table.append([count,jugador.name.capitalize(),
+                    jugador.age])
+
+        print(tabulate(table, headers=["position",
+                    "NAME", "AGE"], tablefmt="grid"))
 
     @staticmethod
     def editPlayer():
@@ -64,15 +50,8 @@ class PlayerManager:
         # print all players
         PlayerManager.printPlayer()
 
-        position = 0
-        while True:
-            try:
-                position = int(
-                    input("Introduzca la posición del jugador a editar "))
-                player = players[position]
-                break
-            except Exception:
-                print("Debe introducir una poscion")
+        positions = promptNumber(message= "Introduzca la posición del jugador a editar: ")
+        player = PlayerManager.players[positions]
 
         ask = input(
             "{} Éste es el jugador que desea editar ? ".format(
@@ -109,16 +88,8 @@ class PlayerManager:
         # print the players so the user can choose which one to change
         PlayerManager.printPlayer()
 
-        positions = -1
-        while True:
-
-            try:
-                positions = int(
-                    input("introduzca la posicion del jugador a eliminar "))
-                player = PlayerManager.players[positions]
-                break
-            except Exception:
-                print("debe introducir un numero de la posicion")
+        positions = promptNumber(message= "introduzca la posicion del jugador a eliminar: ")
+        player = PlayerManager.players[positions]
 
         delete = input("{} es el jugador que desea eliminar? ".format(player.name.capitalize()))
 
