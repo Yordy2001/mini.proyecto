@@ -1,91 +1,68 @@
+# system libraries
+import sys
 from os import system
 from tabulate import tabulate
-from database.database import Database
+# database import
 from database.playerD import PlayerD
 from database.teamD import TeamD
-from managers.PlayerManager import PlayerManager
-from managers.teamManager import TeamManager
+from database.database import Database
+# command import
+from commands.help.help import help
+from commands.add.add import addPlayer, addTeam
+from commands.print.print import printPlayer, printTeam
+from commands.delete.delete import deletePlayer, deleteTeam 
+from commands.edit.edit import editPlayer, editTeam
+# other import
 from utils.tables import *
 
 # Open the connection to the database
 database = Database.connect('mlb.db')
-
 # Get the list of players from the database
 players = database.player.getPlayers()
 # get the list of teams from the database
 teams = database.team.getTeams()
-# conect to the class that countai add, print, delete and edit player
-PlayerManager.init(players)
-# conect to the class that countai add, print, delete and team
-TeamManager.init(teams)
 
-# database.playes.getPlayers();
+if len(sys.argv) <= 1:
+    print(f"Debe introducir por lo menos 1 parametro")
 
-while True:
-    system("cls")
+elif sys.argv[1] == "help":
+    help()
 
-    # print the main table so the user can select 
-    Table()
+elif sys.argv[1] == "add" and sys.argv[2] == "player":
+    addPlayer(players, teams)
 
-    select = input(str("Seleccione la opcion deseada: "))
+elif sys.argv[1] == "add" and sys.argv[2] == "team":
+    addTeam(teams)
+       
+elif sys.argv[1] == "print" and  sys.argv[2] == "player":
+    printPlayer(players)
 
-    if select == "1":
+elif sys.argv[1] == "print" and  sys.argv[2] == "team":
+    printTeam(teams)
 
-        Table.TablePlayer()
+elif sys.argv[1] == "delete" and  sys.argv[2] == "player":
+    deletePlayer(players)
 
-        select_table_player = input("Seleciona una opciin del menu de player: ")
+elif sys.argv[1] == "delete" and  sys.argv[2] == "team":
+    deleteTeam(teams)
 
-        if select_table_player == "1":
-            PlayerManager.addPlayer(teams)
+elif sys.argv[1] == "edit" and  sys.argv[2] == "player":
+    editPlayer(players)
 
-        elif select_table_player == "2":
-            PlayerManager.printPlayer()
+elif sys.argv[1] == "edit" and  sys.argv[2] == "team":
+    editTeam(teams)
 
-        elif select_table_player == "3":
-            PlayerManager.deletePlayer()
+# elif len(sys.argv) == 2:
+#     print("Debe intoducir un sub-comando")
 
-        elif select_table_player == "4":
-            PlayerManager.editPlayer()
+else: 
+    print(f"Error: parametro {sys.argv[1:]} no encontrado, puede introcir <<help>> y mirar los comandos!")
 
-        else:
-            print("Revise la escritura!!")
-            PlayerManager(players)
+# set the player and team in the data base
+database.player.setPlayers(players)
+database.team.setTeams(teams)
 
-    elif select == "2":
-
-        Table.TableTeam()
-
-        select_table_team = input(str("Seleciona una opciin del menu de team: "))
-
-        if select_table_team == "1":
-            TeamManager.addTeam()
-
-        elif select_table_team == "2":
-            TeamManager.printTeam()
-
-        elif select_table_team == "3":
-            TeamManager.delete_team()
-
-        else:
-            print("revise la escritura")
-            TeamManager(teams)
-
-    elif select == "salir del programa" or select == "3":
-        system("cls")
-
-        print("Bye")
-        break
-
-    # avoid an error when entering the wrong data
-    else:
-        system("cls")
-        print("!REVISE SU ESCRITURA!")
-
-    # Store the player list in the database
-    database.player.setPlayers(players)
-    database.team.setTeams(teams)
-
-    print(input("Presione cualquier tecla para continuar"))
+print(input("Presione cualquier tecla para continuar"))
 
 # Close the connection to the database
 database.close()
