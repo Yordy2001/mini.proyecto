@@ -1,21 +1,11 @@
-from tabulate import tabulate
+import sys
+from commands.print.printPlayer import printPlayer 
+from commands.print.printTeam import printTeam
 
-def printPlayer(players):
-    count = -1
-    table = []
-    for jugador in (players):
-        count += 1
-        table.append([count, jugador.name.capitalize(),
-                        jugador.age])
+def Print():
 
-    print(tabulate(table, headers=["position",
-                                    "NAME", "AGE"], tablefmt="grid"))
+    if sys.argv[2] == "player":
+        printPlayer()
 
-def printTeam(teams):
-        team_list = []
-        position = -1
-        for equipo in (teams):
-            position +=1
-            team_list.append([position,equipo.name, equipo.championships, equipo.world_series])
-
-        print(tabulate(team_list, headers=["position","nombre", "coronas", "series Mundiales"], tablefmt="grid"))
+    elif sys.argv[2] == "team":
+        printTeam()
