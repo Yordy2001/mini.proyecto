@@ -22,14 +22,14 @@ players = database.player.getPlayers()
 # get the list of teams from the database
 teams = database.team.getTeams()
 
-if len(sys.argv) <= 1:
+if len(sys.argv) <= 2:
     print(f"Debe introducir por lo menos 1 parametro")
 
 elif sys.argv[1] == "help":
     help()
 
 elif sys.argv[1] == "add" and sys.argv[2] == "player":
-    addPlayer(players, teams)
+    addPlayer(teams)
 
 elif sys.argv[1] == "add" and sys.argv[2] == "team":
     addTeam(teams)
@@ -52,8 +52,8 @@ elif sys.argv[1] == "edit" and  sys.argv[2] == "player":
 elif sys.argv[1] == "edit" and  sys.argv[2] == "team":
     editTeam(teams)
 
-# elif len(sys.argv) == 2:
-#     print("Debe intoducir un sub-comando")
+elif len(sys.argv) == 2:
+     print("Debe intoducir un sub-comando")
 
 else: 
     print(f"Error: parametro {sys.argv[1:]} no encontrado, puede introcir <<help>> y mirar los comandos!")

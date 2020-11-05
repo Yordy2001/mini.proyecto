@@ -5,8 +5,11 @@ from commands.print.print import printTeam
 from utils.createId import createId
 from utils.promptNumber import promptNumber
 
+database = Database.connect('mlb.db')
 
-def addPlayer(players, teams):   
+def addPlayer(teams):   
+
+    players = database.player.getPlayers()
 
     id = createId()
 
