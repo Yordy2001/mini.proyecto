@@ -7,7 +7,7 @@ from models.team import Team
 class Database:
 
     instance = None
- 
+
     @staticmethod
     def connect(name):
 
