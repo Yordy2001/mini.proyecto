@@ -2,6 +2,7 @@ from database.database import Database
 from utils.promptNumber import promptNumber
 from commands.print.print import printPlayer
 
+# Open the connection to the database
 database = Database.connect('mlb.db')
 
 def deletePlayer():
@@ -28,4 +29,5 @@ def deletePlayer():
     else:
         print("Debe introducir SI o NO ")
         deletePlayer()  # return de delete player function
+
     database.player.setPlayers(players)

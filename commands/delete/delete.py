@@ -1,12 +1,13 @@
-import sys
 from commands.delete.deletePlayer import deletePlayer 
 from commands.delete.deleteTeam import deleteTeam
 
-def delete():
+def delete(arg):
 
-    if sys.argv[2] == "player":
+    if  arg == "player":
         deletePlayer()
 
-    elif sys.argv[2] == "team":
+    elif arg == "team":
         deleteTeam()
 
+    else:
+        print("los comandos para esta funcion solo son: 'player' y 'team'")

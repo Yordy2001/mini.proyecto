@@ -1,11 +1,9 @@
-from os import system
 from database.database import Database
 from commands.print.print import printPlayer
 from commands.print.print import printTeam
 from utils.promptNumber import promptNumber
 
 database = Database.connect('mlb.db')
-
 
 def editTeam():
 
@@ -40,12 +38,10 @@ def editTeam():
             team.world_series = world_series
 
     elif ask == "no":
-            system("cls")
             print("Revise bien la posición")
             editTeam()
 
     else:
-        system("cls")
         print("Su respuesta debe ser SI o NO")
         editTeam()
     database.team.setTeams(teams)

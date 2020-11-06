@@ -1,13 +1,13 @@
-import sys
 from commands.add.addPlayer import addPlayer
 from commands.add.addTeam import addTeam
 
-def add (argv):
+def add (arg):
 
-    if sys.argv[2] == "player":
+    if arg == "player":
         addPlayer()
 
-    elif sys.argv[2] == "team":
+    elif arg == "team":
         addTeam()
+
     else:
         print("los comandos para esta funcion solo son: 'player' y 'team'")

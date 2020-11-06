@@ -2,6 +2,7 @@ from tabulate import tabulate
 from database.database import Database
 from models.player import Player
 
+# Open the connection to the database
 database = Database.connect('mlb.db')
 
 def printTeam():

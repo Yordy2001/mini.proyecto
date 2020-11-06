@@ -1,11 +1,10 @@
-import sys
 from commands.print.printPlayer import printPlayer 
 from commands.print.printTeam import printTeam
 
-def Print():
+def Print(arg):
 
-    if sys.argv[2] == "player":
+    if  arg == "player":
         printPlayer()
 
-    elif sys.argv[2] == "team":
+    elif arg == "team":
         printTeam()

@@ -5,6 +5,7 @@ from commands.print.print import printTeam
 from utils.createId import createId
 from utils.promptNumber import promptNumber
 
+# Open the connection to the database
 database = Database.connect('mlb.db')
 
 def addPlayer():   
@@ -29,6 +30,5 @@ def addPlayer():
 
     # Stores the list of players in the database
     players.append(player)
+    
     database.player.setPlayers(players)
-
-

@@ -1,14 +1,14 @@
-import sys
 from commands.edit.editTeam import editTeam 
 from commands.edit.editPlayer import editPlayer
 
-def edit():
 
-    if sys.argv[2] == "player":
+def edit(arg):
+
+    if  arg== "player":
         editPlayer()
 
-    elif sys.argv[2] == "team":
+    elif arg == "team":
         editTeam()
-        
+
     else:
-        print("este comado es incoreccto")
+        print("los comandos para esta funcion solo son: 'player' y 'team'")

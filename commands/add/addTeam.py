@@ -25,4 +25,5 @@ def addTeam():
 
     team = Team(id, name, championships, world_series)
     teams.append(team)  # store the teams in the data base
+    
     database.team.setTeams(teams)
