@@ -16,8 +16,7 @@ class PlayerD:
 
         return players
 
-    def setPlayers(self, players):
-        self.cursor.execute('DELETE FROM players')
+    def addPlayers(self, players):
 
         for player in players:
             self.cursor.execute(

@@ -31,4 +31,4 @@ def addPlayer():
     # Stores the list of players in the database
     players.append(player)
     
-    database.player.setPlayers(players)
+    database.player.addPlayers(players)
