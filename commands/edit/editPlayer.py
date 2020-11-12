@@ -6,7 +6,7 @@ database = Database.connect('mlb.db')
 
 def editPlayer():
 
-    players = database.player.getPlayer()
+    players = database.player.getPlayers()
 
     # print all players
     printPlayer()
@@ -41,4 +41,5 @@ def editPlayer():
     else:
         print("Su respuesta debe ser SI o NO")
         editPlayer()
-    database.player.addPlayers(players)
+        
+    database.player.setPlayers(players)

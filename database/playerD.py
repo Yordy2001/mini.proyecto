@@ -16,6 +16,17 @@ class PlayerD:
 
         return players
 
+    def setPlayers(self, players):
+    
+        self.cursor.execute('DELETE FROM players')
+
+        for player in players:
+            self.cursor.execute(
+                'INSERT INTO players VALUES (?, ?, ?, ?)',
+                (player.id, player.name, player.age, player.team_id)
+            )
+        self.conn.commit()
+
     def addPlayers(self, players):
 
         for player in players:
