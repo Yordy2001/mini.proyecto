@@ -13,7 +13,7 @@ def printPlayer():
     table = []
     for jugador in (players):
         count += 1
-        table.append([count, jugador.name.capitalize(),
+        table.append([count, jugador.name.title(),
                         jugador.age])
 
     print(tabulate(table, headers=["position",

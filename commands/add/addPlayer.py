@@ -11,7 +11,6 @@ database = Database.connect('mlb.db')
 def addPlayer():   
 
     teams = database.team.getTeams()
-    players = database.player.getPlayers()
 
     id = createId()
 
@@ -29,6 +28,4 @@ def addPlayer():
     player = Player(id, name, age, team_id)
 
     # Stores the list of players in the database
-    players.append(player)
-    
-    database.player.addPlayers(players)
+    database.player.addPlayer(player)
