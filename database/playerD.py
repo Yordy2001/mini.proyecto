@@ -35,4 +35,3 @@ class PlayerD:
         )
 
         self.conn.commit()
-#  update players set name = ?, age = ?
