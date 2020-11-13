@@ -27,9 +27,5 @@ def addPlayer():
 
     player = Player(id, name, age, team_id)
 
-    players = []
-    
     # Stores the list of players in the database
-    players.append(player)
-
-    database.player.addPlayers(players)
+    database.player.addPlayer(player)

@@ -27,12 +27,12 @@ class PlayerD:
             )
         self.conn.commit()
 
-    def addPlayers(self, players):
-
-        for player in players:
-            self.cursor.execute(
-                'INSERT INTO players VALUES (?, ?, ?, ?)',
-                (player.id, player.name, player.age, player.team_id)
-            )
+    def addPlayer(self, player):
+        
+        self.cursor.execute(
+            'INSERT INTO players VALUES (?, ?, ?, ?)',
+            (player.id, player.name, player.age, player.team_id)
+        )
 
         self.conn.commit()
+#  update players set name = ?, age = ?
