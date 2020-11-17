@@ -1,7 +1,7 @@
+from commands.print.print import printTeam
 from database.database import Database
 from models.player import Player
 from models.team import Team
-from commands.print.print import printTeam
 from utils.createId import createId
 from utils.promptNumber import promptNumber
 

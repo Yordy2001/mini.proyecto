@@ -27,3 +27,11 @@ class TeamD:
             )
 
         self.conn.commit()
+
+    def addTeam(self, team):
+
+        self.cursor.execute(
+            'INSERT INTO teams VALUES (?, ?, ?, ?)',
+                (team.id, team.name, team.championships, team.world_series)
+            )
+        self.conn.commit()

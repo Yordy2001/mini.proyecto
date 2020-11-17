@@ -10,9 +10,6 @@ database = Database.connect('mlb.db')
 
 def addTeam():
 
-    # get the list of teams from the database
-    teams = database.team.getTeams()
-
     id = createId()
 
     name = input("Ingrese el nombre del equipo ")
@@ -24,6 +21,5 @@ def addTeam():
         "ingrese la cantidad  de series mundiales que ha ganado: ")
 
     team = Team(id, name, championships, world_series)
-    teams.append(team)  # store the teams in the data base
     
-    database.team.setTeams(teams)
+    database.team.addTeam(team)
