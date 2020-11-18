@@ -34,4 +34,5 @@ class TeamD:
             'INSERT INTO teams VALUES (?, ?, ?, ?)',
                 (team.id, team.name, team.championships, team.world_series)
             )
+            
         self.conn.commit()
