@@ -30,4 +30,4 @@ def deletePlayer():
         print("Debe introducir SI o NO ")
         deletePlayer()  # return de delete player function
 
-    database.player.setPlayers(players)
+    database.player.deletePlayer(player)

@@ -17,7 +17,7 @@ class PlayerD:
         return players
 
     def setPlayers(self, players):
-        
+
         self.cursor.execute('DELETE FROM players')
 
         for player in players:
@@ -28,7 +28,7 @@ class PlayerD:
         self.conn.commit()
 
     def addPlayer(self, player):
-        
+
         self.cursor.execute(
             'INSERT INTO players VALUES (?, ?, ?, ?)',
             (player.id, player.name, player.age, player.team_id)
@@ -41,6 +41,15 @@ class PlayerD:
         self.cursor.execute(
             'UPDATE players SET name = ?, age = ?, team_id = ? WHERE id = ?',
             (player.name, player.age, player.team_id, player.id)
+        )
+
+        self.conn.commit()
+
+    def deletePlayer(self, player):
+
+        self.cursor.execute(
+            'DELETE  FROM players WHERE id = ?',
+            ([player.id]) 
         )
 
         self.conn.commit()
