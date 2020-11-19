@@ -35,3 +35,12 @@ class PlayerD:
         )
 
         self.conn.commit()
+
+    def updatePlayer(self, player):
+
+        self.cursor.execute(
+            'UPDATE players SET name = ?, age = ?, team_id = ? WHERE id = ?',
+            (player.name, player.age, player.team_id, player.id)
+        )
+
+        self.conn.commit()

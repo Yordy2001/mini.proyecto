@@ -41,5 +41,5 @@ def editPlayer():
     else:
         print("Su respuesta debe ser SI o NO")
         editPlayer()
-        
-    database.player.setPlayers(players)
+    
+    database.player.updatePlayer(player)
