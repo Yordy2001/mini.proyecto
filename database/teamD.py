@@ -34,5 +34,14 @@ class TeamD:
             'INSERT INTO teams VALUES (?, ?, ?, ?)',
                 (team.id, team.name, team.championships, team.world_series)
             )
-            
+
+        self.conn.commit()
+
+    def updateTeam(self, team):
+
+        self.cursor.execute(
+            'UPDATE teams SET name = ?, championships = ?, world_series = ? WHERE id = ?',
+            (team.name, team.championships, team.world_series, team.id)
+        )
+
         self.conn.commit()

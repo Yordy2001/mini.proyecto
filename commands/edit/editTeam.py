@@ -12,8 +12,8 @@ def editTeam():
     # print all players
     printTeam()
 
-    positions = promptNumber(
-        "Introduzca la posición del equipo a editar: ")
+    positions = promptNumber("Introduzca la posición del equipo a editar: ")
+
     team = teams[positions]
 
     ask = input(
@@ -23,10 +23,10 @@ def editTeam():
     if ask == "si":
 
         name = input("Edita el nombre {} ".format(team.name))
-        championships = input(
-                "Edita la cantidad de coronas de {} ".format(team.name))
-        world_series = input(
-                "Edita la cantidad de series mudiales de {} ".format(team.name))
+
+        championships = input("Edita la cantidad de coronas de {} ".format(team.name))
+
+        world_series = input("Edita la cantidad de series mudiales de {} ".format(team.name))
 
         if name != "":
             team.name = name
@@ -44,4 +44,5 @@ def editTeam():
     else:
         print("Su respuesta debe ser SI o NO")
         editTeam()
-    database.team.setTeams(teams)
+
+    database.team.updateTeam(team)
