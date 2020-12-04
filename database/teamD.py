@@ -7,6 +7,12 @@ class TeamD:
         self.conn = conn
         self.cursor = cursor
 
+    def tableT(self):
+    
+        self.cursor.execute('CREATE TABLE IF NOT EXISTS teams(id  INTEGER PRIMARY KEY, name TEXT, championships INTEGER, world_seriesINTEGER,)')
+
+        self.conn.commit()
+
     def getTeams(self):
         self.cursor.execute('SELECT * FROM teams')
         teams = []

@@ -6,6 +6,12 @@ class PlayerD:
         self.conn = conn
         self.cursor = cursor
 
+    def tableP(self):
+
+        self.cursor.execute('CREATE TABLE IF NOT EXISTS players(id  INTEGER PRIMARY KEY, name TEXT, age INTEGER, team_id INTEGER')
+
+        self.conn.commit()
+
     def getPlayers(self):
         self.cursor.execute('SELECT * FROM players')
 

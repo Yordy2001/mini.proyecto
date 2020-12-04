@@ -10,4 +10,4 @@ def add (arg):
         addTeam()
 
     else:
-        print("los comandos para esta funcion solo son: 'player' y 'team'")
+        print("Los comandos para esta funcion solo son: 'player' y 'team'")

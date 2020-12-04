@@ -13,7 +13,7 @@ def deleteTeam():
     printTeam()
 
     # get the position from the get position function
-    positions = promptNumber("introduzca la posicion del equipo a eliminar: ")
+    positions = promptNumber("Introduzca la posición del equipo a eliminar: ")
 
     team = teams[positions]
 
@@ -23,7 +23,7 @@ def deleteTeam():
         del teams[positions]
 
     elif delete == "no":
-        print("Revise la posicion")
+        print("Revise la posición")
         deleteTeam()  # return de delete player function
 
     else:
