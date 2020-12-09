@@ -7,9 +7,9 @@ class TeamD:
         self.conn = conn
         self.cursor = cursor
 
-    def tableT(self):
+    def createTable(self):
     
-        self.cursor.execute('CREATE TABLE IF NOT EXISTS teams(id  INTEGER PRIMARY KEY, name TEXT, championships INTEGER, world_seriesINTEGER,)')
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS teams(id TEXT, name TEXT, championships INTEGER, world_series INTEGER)''')
 
         self.conn.commit()
 
@@ -53,7 +53,7 @@ class TeamD:
         self.conn.commit()
 
     def deletePlayer(self, team):
-    
+
         self.cursor.execute(
             'DELETE  FROM teams WHERE id = ?',
             ([team.id]) 

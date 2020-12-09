@@ -23,6 +23,9 @@ class Database:
         self.cursor = self.conn.cursor()
         self.player = PlayerD(self.conn, self.cursor)
         self.team = TeamD(self.conn, self.cursor)
+        self.team.createTable()
+        self.player.createTable()
+        
 
     def close(self):
         self.cursor.close()

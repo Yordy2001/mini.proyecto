@@ -6,9 +6,9 @@ class PlayerD:
         self.conn = conn
         self.cursor = cursor
 
-    def tableP(self):
+    def createTable(self):
 
-        self.cursor.execute('CREATE TABLE IF NOT EXISTS players(id  INTEGER PRIMARY KEY, name TEXT, age INTEGER, team_id INTEGER')
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS players (id TEXT, name TEXT, age INTEGER, team_id INTEGER)''')
 
         self.conn.commit()
 
@@ -54,7 +54,7 @@ class PlayerD:
     def deletePlayer(self, player):
 
         self.cursor.execute(
-            'DELETE  FROM players WHERE id = ?',
+            'DELETE FROM players WHERE id = ?',
             ([player.id]) 
         )
 

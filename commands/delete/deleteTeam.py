@@ -17,7 +17,7 @@ def deleteTeam():
 
     team = teams[positions]
 
-    delete = input("{}, es el equipo que desea eliminar? ".format(team.name))
+    delete = input("{}, es el equipo que desea eliminar? ".format(team.name.title()))
 
     if delete == "si":
         del teams[positions]
