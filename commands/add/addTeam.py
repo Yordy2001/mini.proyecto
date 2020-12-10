@@ -12,13 +12,13 @@ def addTeam():
 
     id = createId()
 
-    name = input("Ingrese el nombre del equipo ")
+    name = input("Ingrese el nombre del equipo: ")
 
     championships = promptNumber(
-        "ingrese la cantidad de coronas que ha ganado: ")
+        "Ingrese la cantidad de coronas que ha ganado: ")
 
     world_series = promptNumber(
-        "ingrese la cantidad  de series mundiales que ha ganado: ")
+        "Ingrese la cantidad  de series mundiales que ha ganado: ")
 
     team = Team(id, name, championships, world_series)
     

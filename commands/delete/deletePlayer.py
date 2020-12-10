@@ -17,7 +17,7 @@ def deletePlayer():
     player = players[positions]
 
     delete = input("{}, es el jugador que desea eliminar? ".format(
-        player.name.capitalize()))
+        player.name.title()))
 
     if delete == "si":
         del players[positions]

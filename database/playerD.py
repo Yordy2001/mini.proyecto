@@ -6,6 +6,19 @@ class PlayerD:
         self.conn = conn
         self.cursor = cursor
 
+    def createTable(self):
+
+        self.cursor.execute('''
+            CREATE TABLE IF NOT EXISTS players (
+                id TEXT,
+                name TEXT,
+                age INTEGER,
+                team_id TEXT
+                )
+            ''')
+
+        self.conn.commit()
+
     def getPlayers(self):
         self.cursor.execute('SELECT * FROM players')
 
@@ -48,7 +61,7 @@ class PlayerD:
     def deletePlayer(self, player):
 
         self.cursor.execute(
-            'DELETE  FROM players WHERE id = ?',
+            'DELETE FROM players WHERE id = ?',
             ([player.id]) 
         )
 
