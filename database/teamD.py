@@ -9,7 +9,14 @@ class TeamD:
 
     def createTable(self):
     
-        self.cursor.execute('''CREATE TABLE IF NOT EXISTS teams(id TEXT, name TEXT, championships INTEGER, world_series INTEGER)''')
+        self.cursor.execute('''
+            CREATE TABLE IF NOT EXISTS teams (
+                id TEXT,
+                name TEXT,
+                championships INTEGER,
+                world_series INTEGER
+                )
+            ''')
 
         self.conn.commit()
 
