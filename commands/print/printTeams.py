@@ -5,7 +5,7 @@ from models.player import Player
 # Open the connection to the database
 database = Database.connect('mlb.db')
 
-def printTeam():
+def printTeams():
 
     teams = database.team.getTeams()
 

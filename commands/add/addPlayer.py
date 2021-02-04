@@ -1,4 +1,4 @@
-from commands.print.print import printTeam
+from commands.print.printTeams import printTeams
 from database.database import Database
 from models.player import Player
 from models.team import Team
@@ -19,11 +19,12 @@ def addPlayer():
     age = promptNumber("Introduce la edad del jugador: ")
 
     # call prin_teams function
-    printTeam()
+    printTeams()
 
     positions = promptNumber(
         "Ingrese la posicion del equipo al que quiere que pertenezca el jugador: ")
     team_id = teams[positions].id
+    print("    Jugador agregado Exitosamente!  ")
 
     player = Player(id, name, age, team_id)
 
