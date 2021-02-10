@@ -1,10 +1,10 @@
-from commands.print.printPlayer import printPlayer 
-from commands.print.printTeam import printTeam
+from commands.print.printPlayers import printPlayers
+from commands.print.printTeams import printTeams
 
 def Print(arg):
 
-    if  arg == "player":
-        printPlayer()
+    if  arg == "players":
+        printPlayers()
 
-    elif arg == "team":
-        printTeam()
+    elif arg == "teams":
+        printTeams()

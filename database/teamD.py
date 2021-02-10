@@ -8,7 +8,7 @@ class TeamD:
         self.cursor = cursor
 
     def createTable(self):
-    
+        
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS teams (
                 id TEXT,

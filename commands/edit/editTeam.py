@@ -1,6 +1,6 @@
 from database.database import Database
-from commands.print.print import printPlayer
-from commands.print.print import printTeam
+from commands.print.printPlayers import printPlayers
+from commands.print.printTeams import printTeams
 from utils.promptNumber import promptNumber
 
 database = Database.connect('mlb.db')
@@ -10,7 +10,7 @@ def editTeam():
     teams = database.team.getTeams()
 
     # print all players
-    printTeam()
+    printTeams()
 
     positions = promptNumber("Introduzca la posición del equipo a editar: ")
 
