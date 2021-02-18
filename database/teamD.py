@@ -59,7 +59,7 @@ class TeamD:
 
         self.conn.commit()
 
-    def deletePlayer(self, team):
+    def deleteTeam(self, team):
 
         self.cursor.execute(
             'DELETE  FROM teams WHERE id = ?',

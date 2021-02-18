@@ -31,4 +31,4 @@ def deleteTeam():
         print("Debe introducir SI o NO ")
         deleteTeam()  # return de delete player function
 
-    database.team.deletePlayer(team)
+    database.team.deleteTeam(team)
