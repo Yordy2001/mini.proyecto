@@ -3,10 +3,10 @@ from database.playerD import PlayerD
 from database.teamD import TeamD
 from database.database import Database
 from commands.help.help import help
-from commands.add.add import add
-from commands.print.print import Print
-from commands.delete.delete import delete
-from commands.edit.edit import edit
+from commands.add_all import add
+from commands.print_all import Print
+from commands.edit_all import edit
+from commands.delete_all import delete
 
 if len(sys.argv) <= 2:
     print("Introcuzca un comando y un sub-comando!")

@@ -5,3 +5,7 @@ class Team:
         self.name = name
         self.championships = championships
         self.world_series = world_series
+
+    def print(self):
+        
+        return [self.name.title() , str(self.championships), str(self.world_series)]

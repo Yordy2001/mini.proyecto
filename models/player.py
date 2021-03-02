@@ -5,3 +5,7 @@ class Player:
         self.name = name
         self.age = age
         self.team_id = team_id
+
+    def print(self):
+
+        return [self.name.title(), self.age]
