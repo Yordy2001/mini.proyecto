@@ -1,8 +1,9 @@
 from models.player import Player
 
+
 class PlayerD:
 
-    def  __init__(self, conn, cursor):
+    def __init__(self, conn, cursor):
         self.conn = conn
         self.cursor = cursor
 
@@ -40,6 +41,31 @@ class PlayerD:
             )
         self.conn.commit()
 
+    def getPLayersT(self, team_name):
+
+        self.cursor.execute(
+            '''
+            SELECT
+                players.name,
+                players.age,
+                teams.name AS teamName,
+                teams.championships,
+                teams.world_series
+            FROM players
+            INNER JOIN teams ON players.team_id = teams.id
+            WHERE teams.name = ?
+            ''',
+            (str(team_name[0]),)
+        )
+
+        playersT = []
+
+        for name, age, teamName, championships, world_series in self.cursor.fetchall():
+            playersT.append(
+                (name.title(), age, teamName.title(), championships, world_series))
+
+        return playersT
+
     def addPlayer(self, player):
 
         self.cursor.execute(
@@ -62,7 +88,7 @@ class PlayerD:
 
         self.cursor.execute(
             'DELETE FROM players WHERE id = ?',
-            ([player.id]) 
+            ([player.id])
         )
 
         self.conn.commit()

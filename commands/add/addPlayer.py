@@ -8,7 +8,8 @@ from utils.promptNumber import promptNumber
 # Open the connection to the database
 database = Database.connect('mlb.db')
 
-def addPlayer():   
+
+def addPlayer():
 
     teams = database.team.getTeams()
 
@@ -18,13 +19,15 @@ def addPlayer():
 
     age = promptNumber("Introduce la edad del jugador: ")
 
-    # call prin_teams function
+    # prin_teams function
     printTeams()
 
     positions = promptNumber(
         "Ingrese la posicion del equipo al que quiere que pertenezca el jugador: ")
+
     team_id = teams[positions].id
-    print("    Jugador agregado Exitosamente!  ")
+
+    print("Jugador agregado Exitosamente!")
 
     player = Player(id, name, age, team_id)
 
