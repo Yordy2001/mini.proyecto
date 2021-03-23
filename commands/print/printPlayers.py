@@ -17,4 +17,4 @@ def printPlayers():
         table.append([count, *jugador.print()])
 
     print(tabulate(table, headers=["position",
-                                   "NAME", "AGE"], tablefmt="grid"))
+                                   "NAME", "AGE", "AVG"], tablefmt="grid"))

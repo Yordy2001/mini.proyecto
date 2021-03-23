@@ -14,7 +14,8 @@ class PlayerD:
                 id TEXT,
                 name TEXT,
                 age INTEGER,
-                team_id TEXT
+                team_id TEXT,
+                avg INTEGER
                 )
             ''')
 
@@ -25,8 +26,8 @@ class PlayerD:
 
         players = []
 
-        for id, name, age, team_id in self.cursor.fetchall():
-            players.append(Player(id, name, age, team_id))
+        for id, name, age, team_id, avg in self.cursor.fetchall():
+            players.append(Player(id, name, age, team_id, avg))
 
         return players
 
@@ -36,8 +37,8 @@ class PlayerD:
 
         for player in players:
             self.cursor.execute(
-                'INSERT INTO players VALUES (?, ?, ?, ?)',
-                (player.id, player.name, player.age, player.team_id)
+                'INSERT INTO players VALUES (?, ?, ?, ?, ?)',
+                (player.id, player.name, player.age, player.team_id, player.avg)
             )
         self.conn.commit()
 
@@ -69,8 +70,8 @@ class PlayerD:
     def addPlayer(self, player):
 
         self.cursor.execute(
-            'INSERT INTO players VALUES (?, ?, ?, ?)',
-            (player.id, player.name, player.age, player.team_id)
+            'INSERT INTO players VALUES (?, ?, ?, ?, ?)',
+            (player.id, player.name, player.age, player.team_id, player.avg)
         )
 
         self.conn.commit()
@@ -78,8 +79,8 @@ class PlayerD:
     def updatePlayer(self, player):
 
         self.cursor.execute(
-            'UPDATE players SET name = ?, age = ?, team_id = ? WHERE id = ?',
-            (player.name, player.age, player.team_id, player.id)
+            'UPDATE players SET name = ?, age = ?, team_id = ?, avg WHERE id = ?',
+            (player.name, player.age, player.team_id, player.avg, player.id)
         )
 
         self.conn.commit()

@@ -16,4 +16,4 @@ def printTeams():
         position +=1
         team_list.append([position, *equipo.print()])
 
-    print(tabulate(team_list, headers=["position","name", "championships", "world series"], tablefmt="grid"))
+    print(tabulate(team_list, headers=["position", "name", "championships", "world series"], tablefmt="grid"))

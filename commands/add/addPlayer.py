@@ -19,6 +19,14 @@ def addPlayer():
 
     age = promptNumber("Introduce la edad del jugador: ")
 
+    number_of_shifts = promptNumber(
+        f"Introduce la cantidad de tunos de {name}: ")
+
+    number_of_hits = promptNumber(
+        f"Introduce la cantidad de hits de {name}: ")
+
+    avg = (number_of_hits / number_of_shifts) * 1000
+
     # prin_teams function
     printTeams()
 
@@ -29,7 +37,7 @@ def addPlayer():
 
     print("Jugador agregado Exitosamente!")
 
-    player = Player(id, name, age, team_id)
+    player = Player(id, name, age, team_id, int(avg))
 
     # Stores the list of players in the database
     database.player.addPlayer(player)
