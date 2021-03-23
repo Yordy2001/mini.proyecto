@@ -1,30 +1,66 @@
 import sys
+from argparse import ArgumentParser
 from database.playerD import PlayerD
 from database.teamD import TeamD
 from database.database import Database
-from commands.help.help import help
-from commands.add_all import add
-from commands.print_all import Print
-from commands.edit_all import edit
-from commands.delete_all import delete
+from commands.print.print_players_team import PlayerTeam
+from commands.add.addPlayer import addPlayer
+from commands.print.printPlayers import printPlayers
+from commands.add.addTeam import addTeam
+from commands.print.printTeams import printTeams
+from commands.delete.deletePlayer import deletePlayer
+from commands.delete.deleteTeam import deleteTeam
 
-if len(sys.argv) <= 2:
-    print("Introcuzca un comando y un sub-comando!")
+parser = ArgumentParser()
+parser.add_argument('--add',
+                    type=str,
+                    choices=['player', 'team'],
+                    help="agregar players or teams")
 
-elif sys.argv[1] == "help":
-    help()
+parser.add_argument('--print',
+                    type=str,
+                    choices=['players', 'teams'],
+                    help="Iprimir players or teams")
 
-elif sys.argv[1] == "add":
-    add(sys.argv[2])
+parser.add_argument('--printPT',
+                    choices=["tigueres del licey", "TL",
+                             "aguilas cibaeñas", "AC",
+                             "leones del escogido", "LE",
+                             "estrellas orinetales", "EO",
+                             "toros del este", "TE",
+                             "gigantes del cibao", "GC"],
+                    type=str,
+                    nargs='+',
+                    help="Iprime las 2 tablas en juntas")
 
-elif sys.argv[1] == "print":
-    Print(sys.argv[2])
+parser.add_argument('--delete',   type=str,
+                    choices=['player', 'team'],
+                    help="Eliminar players or teams")
 
-elif sys.argv[1] == "delete":
-    delete(sys.argv[2])
+parser.add_argument('--update',
+                    type=str,
+                    choices=['player', 'team'],
+                    help="actualiza players or teams")
 
-elif sys.argv[1] == "edit":
-    edit(sys.argv[2])
+args = parser.parse_args()
 
-else: 
-    print(f"Error: parametro {sys.argv[1:]} no encontrado, puede introcir <<help>> y mirar los comandos!")
+if args.add == "player":
+    addPlayer()
+
+elif args.add == "team":
+    addPlayer()
+
+elif args.print == "players":
+    printPlayers()
+
+elif args.print == "teams":
+    printTeams()
+
+elif args.delete == "player":
+    deletePlayer()
+
+elif args.delete == "team":
+    deleteTeam()
+
+elif args.printPT != None:
+    PlayerTeam(args.printPT)
