@@ -2,8 +2,8 @@ def help():
     print("""
     add player
     add team
-    print player
-    print team
+    print players
+    print teams
     delete player
     delete team
     edit player

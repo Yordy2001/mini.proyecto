@@ -8,7 +8,7 @@ from commands.print_all import Print
 from commands.edit_all import edit
 from commands.delete_all import delete
 
-if len(sys.argv) <= 2:
+if len(sys.argv) <= 1:
     print("Introcuzca un comando y un sub-comando!")
 
 elif sys.argv[1] == "help":
