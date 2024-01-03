@@ -1,18 +1,35 @@
 <p> Terminal baseball teams and players manager app <p> 
 
-## TECH 
+## Stack 
 
 - Python 3
 - Sqlite
 
 ## RUN PROJECT
 
-1. Install env
+1. [Install-env](https://www.geeksforgeeks.org/python-virtual-environment/)
+```sh
+    pip install virtualenv
+```
+2. Create env
 
+```sh
+    pip install virtualenv
+```
+3. Activate env
 
-2. RUN env
+```sh
+    cd env
+    Scripts\activate
+```
 
+4. Install requirements.txt
 
-3. Install requirements.txt
+```sh
+    pip install -r requirements.txt
+```
+5. Run Project
 
-4. Run 
+```sh
+    Python main.py help
+```
